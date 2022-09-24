@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intro Vue.js</title>
+  </head>
+  <body>
+    <p>Esto es una zona normal, sin control de Vue.js</p>
+    <!-- Vamos a decirle donde queremos que Vue controle nuestra web, en este caso este DIV 
+    Todo lo que esté dentro, está en el contexto de 
+    -->
+    <div id="myApp">
+      <p>Bajo el control de Vue.js</p>
+      <!-- Todo lo que esté dentro del div lo maneja Vue.js, para eso no debe tener template!!!  -->
+      <p>{{ 1 + 1 }}</p>
+      <p>{{ message }}</p>
+
+      <button @click="changeMessage">Cambiar mensaje</button>
+
+      <h1>Mis Personas</h1>
+      <ul>
+        <li v-for="persona in personas">{{ persona }}</li>
+      </ul>
+
+      <h1>Personas de Madrid :)</h1>
+      <ul>
+        <li v-for="(persona, index) in findPersonaCity('Madrid')" :key="persona.id">
+          {{index+1}}: {{ persona.nombre }}
+        </li>
+      </ul>
+      <p>Nueva Persona: {{newPersona}}</p>
+      <input type=text" v-model.trim="newPersona" @keyup.enter="addPersona" />
+
+      <p>Hay más de 5 Personas???</p>
+      <p v-if="personas.length > 5">
+        <strong>Si</strong>
+      </p>
+      <p v-else>
+        <strong>No</strong>
+      </p>
+    </div>
+    -->
+    <!--  Esta parte de la web ya no está controlada por la instancia de Vue.js -->
+    <p>Fuera del control de Vue.js</p>
+
+    <!-- Cargamos Vue desde el CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- Importamos nuestro script donde esta Vue -->
+    <script src="app.js"></script>
+  </body>
+</html>

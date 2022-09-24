@@ -6,7 +6,7 @@ En esta sección vamos a ver cómo configurar nuestro entorno de trabajo para po
 [![LICENSE](https://img.shields.io/badge/License-CC-%23e64545)](https://joseluisgs.github.io/docs/license/)
 ![GitHub](https://img.shields.io/github/last-commit/joseluisgs/vue-profesores-madrid-2022-2022)
 
-![Vue.js](https://lenguajejs.com/vuejs/introduccion/primeros-pasos/vue-main.js-app.vue.png)
+![Vue.js](../images/vue-main.js-app.vue.png)
 
 - [Configuración del entorno de trabajo](#configuración-del-entorno-de-trabajo)
   - [Acerca de](#acerca-de)

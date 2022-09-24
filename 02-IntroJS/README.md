@@ -7,7 +7,7 @@ En esta sección vamos a ver algunos elementos de JavaScript moderno que nos van
 [![LICENSE](https://img.shields.io/badge/License-CC-%23e64545)](https://joseluisgs.github.io/docs/license/)
 ![GitHub](https://img.shields.io/github/last-commit/joseluisgs/vue-profesores-madrid-2022-2022)
 
-![Vue.js](https://lenguajejs.com/vuejs/introduccion/primeros-pasos/vue-main.js-app.vue.png)
+![Vue.js](../images/javascript.png)
 
 - [Introducción a JavaScript moderno](#introducción-a-javascript-moderno)
   - [Acerca de](#acerca-de)
