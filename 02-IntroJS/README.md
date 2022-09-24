@@ -12,11 +12,19 @@ En esta sección vamos a ver algunos elementos de JavaScript moderno que nos van
 - [Introducción a JavaScript moderno](#introducción-a-javascript-moderno)
   - [Acerca de](#acerca-de)
   - [Referencias](#referencias)
+  - [Desarrollo con Node.js con NPM](#desarrollo-con-nodejs-con-npm)
+    - [Crear un proyecto](#crear-un-proyecto)
+    - [Instalar paquetes](#instalar-paquetes)
+    - [package.json](#packagejson)
+    - [Linter, estilos y formateo](#linter-estilos-y-formateo)
+    - [Nodemon](#nodemon)
   - [Introducción](#introducción)
     - [Tipos de datos](#tipos-de-datos)
     - [Variables y constantes](#variables-y-constantes)
     - [Template literals](#template-literals)
     - [Operadores ternarios y operadores condicionales](#operadores-ternarios-y-operadores-condicionales)
+    - [Igualdad o Identidad](#igualdad-o-identidad)
+    - [Salida de datos](#salida-de-datos)
   - [Programación estructurada](#programación-estructurada)
   - [Arrays](#arrays)
   - [Programación Funcional](#programación-funcional)
@@ -41,9 +49,10 @@ En esta sección vamos a ver algunos elementos de JavaScript moderno que nos van
   - [Asincronía](#asincronía)
     - [Promesas](#promesas)
     - [Async / Await](#async--await)
+    - [Ejemplo de asincronia](#ejemplo-de-asincronia)
   - [API REST](#api-rest)
     - [Api Fetch](#api-fetch)
-  - [Axios](#axios)
+    - [Axios](#axios)
   - [Autor](#autor)
     - [Contacto](#contacto)
     - [¿Un café?](#un-café)
@@ -56,6 +65,60 @@ Elementos de JavaScript moderno que nos van a permitir trabajar con Vue.js o Nod
 ## Referencias 
 - [MSDN Web Docs - JavaScript (ES6)](https://developer.mozilla.org/es/docs/Web/JavaScript)
 
+## Desarrollo con Node.js con NPM
+### Crear un proyecto
+Para crear un proyecto Node.js con NPM vamos a usar el comando `npm init` que nos va a crear un fichero `package.json` con la información del proyecto. 
+
+```bash
+npm init
+```
+### Instalar paquetes
+Para instalar paquetes vamos a usar el comando `npm install` que nos va a instalar el paquete en el directorio `node_modules` y nos va a añadir la dependencia en el fichero `package.json`. 
+- Dependencias de desarrollo: `npm install --save-dev`
+
+```bash
+npm install <paquete>
+```
+### package.json
+El fichero `package.json` es el fichero de configuración de nuestro proyecto. En él vamos a encontrar información sobre el proyecto, las dependencias, los scripts, etc. 
+
+```json
+{
+  "name": "02-introjs",
+  "version": "1.0.0",
+  "description": "Elementos de JavaScript moderno que nos van a permitir trabajar con Vue.js o Node.js más facilmente.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "nodemon": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "javascript",
+    "nodejs",
+    "vuejs"
+  ],
+  "author": "José Luis González",
+  "license": "CC"
+}
+```
+
+### Linter, estilos y formateo
+Para el linter vamos a usar [ESLint](https://eslint.org/). Para instalarlo vamos a usar el comando `npm install --save-dev eslint`.
+
+Para el estilo vamos a usar [standardjs](https://standardjs.com/). Para instalarlo vamos a usar el comando `npm install --save-dev standard`.
+
+Para el formateo vamos a usar [Prettier](https://prettier.io/). Para instalarlo vamos a usar el comando `npm install --save-dev prettier`.
+
+Mi recomendacion es hacerlo con:
+- https://www.npmjs.com/package/eslint-config-standard
+- https://www.npmjs.com/package/prettier-config-standard
+- https://www.npmjs.com/package/eslint-config-prettier
+
+Configuraremos sus respectivos ficheros de configuración para que se apliquen en nuestro proyecto.
+
+### Nodemon
+Nos va a permitir reiniciar el servidor cada vez que hagamos un cambio en el código. Para instalarlo vamos a usar el comando `npm install --save-dev nodemon`. Solo para proyectos de Node.js
 
 ## Introducción
 ### Tipos de datos
@@ -106,6 +169,25 @@ const edad = 18
 const edadMinima = 18
 const esMayorDeEdad = edad >= edadMinima ? 'Es mayor de edad' : 'Es menor de edad'
 console.log(esMayorDeEdad)
+```
+
+### Igualdad o Identidad
+En JavaScript tenemos dos tipos de igualdad, la igualdad estricta y la igualdad débil. La igualdad estricta compara el valor y el tipo de dato, mientras que la igualdad débil solo compara el valor. 
+
+```js
+console.log(1 == '1') // true
+console.log(1 === '1') // false
+```
+
+### Salida de datos
+Para mostrar datos por consola podemos usar `console.log()` o similares.
+
+```js
+console.log('Hola mundo')
+console.info('Hola mundo')
+console.warn('Hola mundo')
+console.error('Hola mundo')
+console.table([{nombre: 'Pepe', edad: 34}, {nombre: 'Juan', edad: 23}])
 ```
 
 ## Programación estructurada
@@ -535,6 +617,44 @@ async function obtenerPersonajes() {
 obtenerPersonajes()
 ```
 
+### Ejemplo de asincronia
+
+```js
+const miPromesa = () => {
+    return new Promise(( resolve, reject )=> {
+        setTimeout(() => {
+            // resolve('Tenemos un valor en la promesa')
+            reject('REJECT en miPromesa')
+        }, 1000);
+    })
+}
+
+const medirTiempoAsync = async() => {
+
+    try {
+        console.log('Inicio')
+
+        const respuesta = await miPromesa()
+        console.log(respuesta)
+
+        console.log('Fin')
+
+        return 'fin de medir tiempo async'
+
+    } catch (error) {
+        // return 'catch en medirTiempoAsync'
+        throw 'Error en medirTiempoAsync'
+    }
+    
+}
+
+
+medirTiempoAsync()
+    .then( valor => console.log( 'THEN Exitoso:', valor  ) )
+    .catch( err => console.log( 'Error:', err ))
+
+```
+
 ## API REST
 API REST es una forma de comunicar dos aplicaciones a través de HTTP.
 
@@ -549,7 +669,7 @@ fetch('https://rickandmortyapi.com/api/character/')
     .catch((error) => console.log(error))
 
 ```
-## Axios
+### Axios
 [Axios](https://axios-http.com/) es una librería que nos permite hacer peticiones a una api web.
 Se debe instalar el paquete axios en el proyecto.
 
@@ -559,6 +679,7 @@ axios.get('https://rickandmortyapi.com/api/character/')
     .then((response) => console.log(response.data))
     .catch((error) => console.log(error))
 ```
+
 
 ## Autor
 
