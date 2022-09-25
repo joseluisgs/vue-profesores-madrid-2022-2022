@@ -45,6 +45,7 @@ En esta sección vamos a ver algunos elementos de JavaScript moderno que nos van
   - [Desestructuración](#desestructuración)
     - [Desestructurar arrays](#desestructurar-arrays)
     - [Desestructurar objetos](#desestructurar-objetos)
+    - [Rest y spread](#rest-y-spread)
   - [Importaciones y exportaciones](#importaciones-y-exportaciones)
   - [Asincronía](#asincronía)
     - [Promesas](#promesas)
@@ -565,6 +566,35 @@ const { nombre, apellido, edad, telefono= 'No tiene' } = persona
 console.log(nombre) 
 console.log(apellido)
 ``` 
+
+### Rest y spread
+Rest y spread es una forma de extraer valores de un objeto o array.
+
+```js
+// Arrays
+const numeros = [1, 2, 3, 4, 5]
+const [numero1, numero2, ...resto] = numeros
+console.log(numero1)
+console.log(numero2)
+console.log(resto)
+
+// Objetos
+const persona = {
+  nombre: 'Pepe',
+  apellido: 'Perez',
+  edad: 45,
+  direccion: {
+    ciudad: 'Madrid',
+    pais: 'España'
+  }
+}
+const { nombre, apellido, ...resto } = persona
+console.log(nombre)
+console.log(apellido)
+console.log(resto)
+
+```
+
 
 ## Importaciones y exportaciones
 Importaciones y exportaciones son una forma de importar y exportar funciones, clases, variables, etc.
