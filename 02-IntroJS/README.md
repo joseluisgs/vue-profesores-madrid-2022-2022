@@ -51,8 +51,12 @@ En esta sección vamos a ver algunos elementos de JavaScript moderno que nos van
     - [Async / Await](#async--await)
     - [Ejemplo de asincronia](#ejemplo-de-asincronia)
   - [API REST](#api-rest)
+    - [JSON](#json)
+    - [Métodos](#métodos-1)
+    - [Códigos de estado](#códigos-de-estado)
     - [Api Fetch](#api-fetch)
     - [Axios](#axios)
+      - [API REST con axios](#api-rest-con-axios)
   - [Autor](#autor)
     - [Contacto](#contacto)
     - [¿Un café?](#un-café)
@@ -658,6 +662,62 @@ medirTiempoAsync()
 ## API REST
 API REST es una forma de comunicar dos aplicaciones a través de HTTP.
 
+### JSON
+JSON (acrónimo de JavaScript Object Notation, 'notación de objeto de JavaScript') es un formato de texto sencillo para el intercambio de datos. Se trata de un subconjunto de la notación literal de objetos de JavaScript,
+
+```json
+{
+  "nombre": "Pepe",
+  "apellido": "Perez",
+  "edad": 45,
+  "direccion": {
+    "ciudad": "Madrid",
+    "pais": "España"
+  }
+}
+```
+
+Podemos usar JSON para enviar y recibir datos a través de una API REST y pasar objetos de JavaScript a JSON y viceversa.
+
+```js
+const persona = {
+  nombre: 'Pepe',
+  apellido: 'Perez',
+  edad: 45,
+  direccion: {
+    ciudad: 'Madrid',
+    pais: 'España'
+  }
+}
+
+// Pasar un objeto de JavaScript a JSON
+const personaJSON = JSON.stringify(persona)
+console.log(personaJSON)
+
+// Pasar un JSON a un objeto de JavaScript
+const personaObjeto = JSON.parse(personaJSON)
+console.log(personaObjeto)
+```
+
+### Métodos
+Las API REST tienen métodos para realizar acciones en los recursos.
+- GET: Obtener un recurso.
+- POST: Crear un recurso.
+- PUT: Actualizar un recurso.
+- PATCH: Actualizar un recurso (solo unos campos)
+- DELETE: Eliminar un recurso.
+
+### Códigos de estado
+Las API REST devuelven códigos de estado para indicar el estado de la petición.
+- 200: OK
+- 201: Created
+- 204: No Content
+- 400: Bad Request
+- 401: Unauthorized
+- 403: Forbidden
+- 404: Not Found
+- 500: Internal Server Error
+
 ### Api Fetch
 Api fetch es una librería que nos permite hacer peticiones a una api web.
 
@@ -676,6 +736,39 @@ Se debe instalar el paquete axios en el proyecto.
 ```js
 import axios from 'axios'
 axios.get('https://rickandmortyapi.com/api/character/')
+    .then((response) => console.log(response.data))
+    .catch((error) => console.log(error))
+```
+
+#### API REST con axios
+```js
+import axios from 'axios'
+
+// GET
+axios.get('https://rickandmortyapi.com/api/character/')
+    .then((response) => console.log(response.data))
+    .catch((error) => console.log(error))
+
+// POST
+axios.post('https://rickandmortyapi.com/api/character/', {
+    name: 'Rick',
+    status: 'Alive',
+    species: 'Human'
+})
+    .then((response) => console.log(response.data))
+    .catch((error) => console.log(error))
+
+    // PUT
+axios.put('https://rickandmortyapi.com/api/character/1', {
+    name: 'Rick',
+    status: 'Alive',
+    species: 'Human'
+})
+    .then((response) => console.log(response.data))
+    .catch((error) => console.log(error))
+
+    // DELETE
+axios.delete('https://rickandmortyapi.com/api/character/1')
     .then((response) => console.log(response.data))
     .catch((error) => console.log(error))
 ```

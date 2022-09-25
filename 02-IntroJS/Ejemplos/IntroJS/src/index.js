@@ -87,3 +87,22 @@ const pokemonP = pokemonAxios
   .map((pokemon) => pokemon.name)
 console.table(pokemonP)
 
+// Podemos analizar un json sobre la marcha!
+// Sacamos los datos de un objeto pokemon
+const pokeData = Object.keys(pokemonAxios[0])
+console.log(pokeData)
+console.table(pokeData)
+// Sacamos los valores de cada clave
+const pokeValues = Object.values(pokemonAxios[0])
+console.log(pokeValues)
+console.table(pokeValues)
+
+// Recorremos clave y valor
+for (const [key, value] of Object.entries(pokemonAxios[0])) {
+  console.log(`${key}: ${value}`)
+}
+
+// con foreach
+Object.entries(pokemonAxios[0]).forEach(([key, value]) => {
+  console.log(`${key}: ${value}`)
+})
