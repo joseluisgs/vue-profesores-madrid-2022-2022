@@ -23,6 +23,7 @@ En este apartado veremos las bases de Vue.js como sustituto a jQuery y similares
   - [Enlazando reactividad con formularios: v-model](#enlazando-reactividad-con-formularios-v-model)
   - [Modificadores](#modificadores)
   - [Renderizado condicional: v-if y v-else-if y v-show](#renderizado-condicional-v-if-y-v-else-if-y-v-show)
+  - [Ejercicios](#ejercicios)
   - [Autor](#autor)
     - [Contacto](#contacto)
     - [¿Un café?](#un-café)
@@ -116,6 +117,9 @@ Podemos renderizar un elemento condicional con la directiva [v-if](https://vuejs
     <p>Esto sólo se muestra si isVisible es true</p>
   </div>
 ```
+
+## Ejercicios
+- [Ejercicio 1](./EJERCICIOS.md)
 
 ## Autor
 

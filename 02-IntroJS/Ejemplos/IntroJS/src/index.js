@@ -4,7 +4,7 @@
 // O nos podemos traer lo que necesitemos
 import getPersonas, { getPersonasByCiudad, getPersonasCiudadAsync } from './data.js'
 import { axiosPokemon } from './pokemons.js'
-import {getUsers, getUserById, createUser, updateUser, deleteUser} from './rest.js'
+import { getUsers, getUserById, createUser, updateUser, deleteUser } from './rest.js'
 
 console.log('Hola JavaScript')
 

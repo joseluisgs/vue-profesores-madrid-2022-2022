@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejemplo Pokemon</title>
+  </head>
+  <style>
+    li {
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <h1>Pokemon, hazte con todos</h1>
+    <!-- Montamos Vue local -->
+    <div id="myApp">
+      <h2>Mis Pokemons</h2>
+      <p>Consultar Pokedex (Base de datos de pokemons)</p>
+      <button @click="cargarPokemons()">Consultar</button>
+
+      <h2>Mis Pokemons</h2>
+      <p>
+        Filtro:
+        <input type="text" v-model.trim="pokeNombre" @keyup="buscarPokemon" />
+      </p>
+      <ul>
+        <li v-for="pokemon in pokemonsFiltrados" :key="pokemon.url">
+          <span @click="infoPokemon(pokemon.url)">{{ pokemon.name }}</span> &nbsp; &nbsp;
+          <button @click="eliminarPokemon(pokemon.url)">🗑️</button>
+        </li>
+      </ul>
+      <p v-if="pokemons.length > 5">
+        <strong>Tienes {{pokemons.length}} pokemons</strong>
+      </p>
+      <p v-else>
+        <strong>No has cargado pokemons</strong>
+      </p>
+      <div v-if="!!pokemonActual">
+        <h3>Información de: {{pokemonActual.name}}</h3>
+        <p>Altura: {{pokemonActual.height}}</p>
+        <p>Peso: {{pokemonActual.weight}}</p>
+        <p>Experiencia: {{pokemonActual.base_experience}}</p>
+        <img :src="pokemonActual.sprites.front_default" />
+      </div>
+
+      <!-- Fin de la instancia de Vue.js-->
+    </div>
+
+    <!-- Cargamos Vue desde el CDN -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <!-- Importamos nuestro script donde esta Vue -->
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -11,6 +11,7 @@ Material del curso de formación del profesorado de la Comunidad de Madrid: Desa
 - [Vue.js para Profesores de la Comunidad de Madrid 2022-2022](#vuejs-para-profesores-de-la-comunidad-de-madrid-2022-2022)
   - [Acerca de](#acerca-de)
   - [Contenidos](#contenidos)
+  - [Referencias](#referencias)
   - [Autor](#autor)
     - [Contacto](#contacto)
     - [¿Un café?](#un-café)
@@ -25,6 +26,10 @@ Estos materiales se irán actualizando a medida que se vaya impartiendo el curso
 1. [Preparación del entorno de trabajo](/01-Entorno/README.md)
 2. [Introducción a JavaScript moderno](/02-IntroJS/README.md)
 3. [Introductorio a Vue.js](/03-IntroVuejs/README.md)
+
+
+## Referencias
+Las referencias importantes o recomendadas para el curso las encontrarás en el [apartado de referencias](/REFERENCIAS.md).
 
 
 ## Autor
