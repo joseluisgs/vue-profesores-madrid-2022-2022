@@ -59,12 +59,12 @@ Es un framework de JavaScript que nos permite crear aplicaciones web de forma se
 
 
 ## Puntos interesantes
-Algunos puntos de interes que podemos observar en Vue.js son:
+Algunos puntos de interés que podemos observar en Vue.js son:
 - fácil de iniciar 
 - versátil y escalable 
 - rendimiento en el DOM (más rápido que React y Angular)
-- ecosistema: vite, pinia, vue router, vitest, cypres, vue utils, quasar...
-- progresiva: lo tienes todo y lo agregas según te haga falta.
+- ecosistema: Vite, Pinia, Vue-Router, Vitest, Cypress, Vue-Utils, Quasar...
+- progresiva: lo tienes todo y lo agregas según te haga falta: solo web, spa, ssr...
 
 ## SPA
 SPA (Single Page Application) es una aplicación web que se carga una sola vez y que se actualiza dinámicamente a medida que el usuario interactúa con ella. En lugar de cargar una nueva página cada vez que el usuario hace clic en un enlace, la aplicación web carga una sola página HTML y actualiza el contenido de la página según sea necesario en base al código JavaScrip. Esto permite que las aplicaciones web sean más rápidas y fluidas para el usuario.
@@ -83,7 +83,7 @@ Nos dará a elegir una plantilla de Vue.js
 
 ```bash
 ✔ Project name: … <your-project-name>
-✔ Add TypeScript? … No / Yes
+✔ Add TypeScript? … No / Yes 
 ✔ Add JSX Support? … No / Yes
 ✔ Add Vue Router for Single Page Application development? … No / Yes
 ✔ Add Pinia for state management? … No / Yes
@@ -108,7 +108,7 @@ En mi caso vamos a usar JS con Pinia, ESlint y Prettier.
 La estructura del proyecto es la siguiente:
 
 - src: carpeta donde se encuentra el código de nuestra app
-  - assets: carpeta donde se encuentran los assets o recurso estáticos de nuestra app
+  - assets: carpeta donde se encuentran los assets o recursos estáticos de nuestra app
   - components: carpeta donde se encuentran los componentes de nuestra app. Puede tener recursos propios por cada componente o test de dichos componentes
   - views: carpeta donde se encuentran las vistas de nuestra app (opcional)
   - App.vue: archivo principal de nuestra app (como solo hay uno, no se necesita views)
@@ -163,8 +163,7 @@ Cuando usamos Vue.js tenemos [dos estilos](https://vuejs.org/guide/introduction.
 
 ### Primer componente
 
-Se crea un componente, es importante indicar su nombre, name. El nombre nos sirve para poder localizarlo con las Vue Developer Tools
-Se importa en el destino el componente. Se incluye en el objeto components y se usa según el nombre con el que se ha importado.
+Se crea un componente, es importante indicar su nombre, name. El nombre nos sirve para poder localizarlo con las Vue Developer Tools. Se importa en el destino el componente. Se incluye en el objeto components y se usa según el nombre con el que se ha importado.
 
 ```js
 <template>
@@ -261,7 +260,7 @@ Podemos enlazar reactividad con formularios con la directiva [v-model](https://v
 ## Lógica del componente 
 
 ### Representación del estado: data
-Podemos representado un estado y reaccionar reactivamente bajo el objeto [data](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#declaring-reactive-state)
+Podemos representar un estado reactivo con el objeto [data](https://vuejs.org/guide/essentials/reactivity-fundamentals.html#declaring-reactive-state)
 ```js
   data() {
     return {
@@ -283,7 +282,7 @@ Los eventos se manejan con la directiva v-on:evento, pero se puede simplificar u
 
 ### Propiedades computadas
 
-Las [propiedades computadas](https://vuejs.org/guide/essentials/computed.html#computed-properties) son propiedades que se calculan en base a otras propiedades del objeto y su valor está cacheado en el componente. Al contrario que los métodos que siempre se ejecutan, las computed properties solo se ejecutan si detectan un cambio en el estado que les afectan, por ejemplo, si se cambia el valor de una propiedad. Muy útil para optimizar el rendimiento de nuestra app.
+Las [propiedades computadas](https://vuejs.org/guide/essentials/computed.html#computed-properties) son propiedades que se calculan en base a otras propiedades del objeto y su valor está cacheado en el componente. Al contrario que los métodos que siempre se ejecutan, las computed properties solo se ejecutan si detectan un cambio en el estado que les afectan, por ejemplo, si se cambia el valor de una propiedad. Muy útil para optimizar el rendimiento de nuestra app, pues pueden usar caché para mejorar su rendimiento.
 
 ```js
 computed: {
@@ -320,7 +319,7 @@ Los [watchers](https://vuejs.org/guide/essentials/watchers.html) son métodos qu
 ```
 
 ## Ejercicios
-- [Ejercicio 1](./EJERCICIOS.md)
+Este tema tiene varios ejercicios, puedes realizarlos [aquí](./EJERCICIOS.md)
 
 ## Autor
 
