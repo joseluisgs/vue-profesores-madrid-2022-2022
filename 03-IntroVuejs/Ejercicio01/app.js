@@ -16,19 +16,19 @@ const app = Vue.createApp({
 
   // Mis metodos
   methods: {
-    cargarPokemons(max = 25) {
+    async cargarPokemons(max = 25) {
       console.log(max);
-      // Consultamos la api de pokemon y nos traemos los max primeros
-      fetch('https://pokeapi.co/api/v2/pokemon?limit=' + max)
-        .then((response) => response.json())
-        .then((data) => {
-          // Los devolvemos ordenados por nombre
-          // console.table(data.results);
-          this.pokemons = data.results.sort((a, b) => a.name.localeCompare(b.name));
-          this.pokemonsFiltrados = this.pokemons;
-        });
+      try {
+        // Consultamos la api de pokemon y nos traemos los max primeros
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${max}`);
+        const data = await response.json();
+        this.pokemons = data.results.sort((a, b) => a.name.localeCompare(b.name));
+        this.pokemonsFiltrados = this.pokemons;
+      } catch (error) {
+        console.log(error);
+      }
     },
-    infoPokemon(url) {
+    infoPokemon({ url }) {
       console.log('URL: ', url);
       // Consultamos la api de pokemon y nos traemos los max primeros
       fetch(url)
@@ -37,7 +37,8 @@ const app = Vue.createApp({
           // Los devolvemos ordenados por nombre
           // console.table(data);
           this.pokemonActual = data;
-        });
+        })
+        .catch((error) => console.log(error));
     },
     eliminarPokemon(url) {
       console.log('Eliminar: ', url);

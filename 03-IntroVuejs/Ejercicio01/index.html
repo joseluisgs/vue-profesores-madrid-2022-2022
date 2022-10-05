@@ -26,11 +26,11 @@
       </p>
       <ul>
         <li v-for="pokemon in pokemonsFiltrados" :key="pokemon.url">
-          <span @click="infoPokemon(pokemon.url)">{{ pokemon.name }}</span> &nbsp; &nbsp;
+          <span @click="infoPokemon(pokemon)">{{ pokemon.name }}</span> &nbsp; &nbsp;
           <button @click="eliminarPokemon(pokemon.url)">🗑️</button>
         </li>
       </ul>
-      <p v-if="pokemons.length > 5">
+      <p v-if="pokemons.length > 0">
         <strong>Tienes {{pokemons.length}} pokemons</strong>
       </p>
       <p v-else>
