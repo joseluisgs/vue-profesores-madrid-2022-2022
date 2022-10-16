@@ -1,11 +1,12 @@
 <template>
-  <h1>Mis Contadores</h1>
+  <h1>{{ titulo }}</h1>
   <h3>{{ mensaje }}</h3>
   <div>
     <p>Valor inicial:</p>
     <input
       type="number"
       v-model="contador"
+      ref="inputContador"
     />
     <h2>Contador</h2>
     <p>{{ contador }}</p>
@@ -18,7 +19,7 @@
       Estás en número rojos
     </p>
     <p v-else>Estás 😁</p>
-    <p>Es divisible entre 3: {{ divisbleEntre3 }}</p>
+    <p :class="{ verde: divisbleEntre3 }">Es divisible entre 3: {{ divisbleEntre3 }}</p>
     <p
       v-if="negativo"
       class="rojo"
@@ -31,23 +32,79 @@
 <script>
   export default {
     name: 'Contador',
+
+    // Propiedades
+    props: {
+      // Valor inicial
+      valorInicial: {
+        type: Number,
+        default: 0,
+        // Siempre mayor que 0
+        validator: (valor) => valor >= 0,
+      },
+      titulo: {
+        type: String,
+        default: 'Contador',
+      },
+      mensaje: {
+        type: String,
+        default: 'Hola',
+      },
+    },
+
+    // eventos que emite el componente
+    emits: ['valor-actualizado'],
+
     //estado reactivo
     data() {
       return {
-        contador: 10,
-        mensaje: 'Hola a todos/as',
+        // Las propiedades son solo de lectura, por lo que si queremos
+        // Operar con ellas debemos copiarlas en el estado
+        contador: this.valorInicial,
         negativo: false,
       }
     },
+
+    // Mi ciclo de vida
+    created() {
+      // todas las propieades se pueden acceder con this!
+      console.log('se ha creado el componente')
+      console.log(this.valorInicial)
+    },
+    beforeMount() {
+      console.log('antes de montar el componente')
+    },
+    mounted() {
+      console.log('se ha montado el componente')
+      // Ponemos el foco en el input
+      this.$refs.inputContador.focus()
+    },
+    beforeUpdate() {
+      console.log('antes de actualizar el componente')
+    },
+    updated() {
+      console.log('se ha actualizado el componente')
+    },
+    beforeUnmount() {
+      console.log('antes de desmontar el componente')
+    },
+    unmounted() {
+      console.log('se ha desmontado el componente')
+    },
+
     // Mis métodos
     methods: {
       incrementar() {
         console.log('incrementar')
         this.contador++
+        // Emitimos el evento que ha cambiado el valor
+        this.$emit('valor-actualizado', this.contador)
       },
       decrementar() {
         console.log('decrementar')
         this.contador--
+        // Emitimos el evento que ha cambiado el valor
+        this.$emit('valor-actualizado', this.contador)
       },
     },
     // Propiedades computadas
@@ -82,6 +139,10 @@
 
   .rojo {
     color: red;
+    font-weight: bold;
+  }
+  .verde {
+    color: green;
     font-weight: bold;
   }
 </style>

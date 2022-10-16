@@ -15,8 +15,10 @@ Comenzaremos con las bases de Vue.js
   - [Eventos](#eventos)
   - [Comunicación entre componentes](#comunicación-entre-componentes)
   - [Ciclos de vida de un componente](#ciclos-de-vida-de-un-componente)
+  - [Elementos dependientes del estado o similar](#elementos-dependientes-del-estado-o-similar)
+  - [Estilos condicionales](#estilos-condicionales)
+  - [Referencias a elementos del template](#referencias-a-elementos-del-template)
   - [Slots](#slots)
-  - [Etilos condicionales](#etilos-condicionales)
   - [Referencias](#referencias)
   - [Ejercicios](#ejercicios)
   - [Autor](#autor)
@@ -83,15 +85,23 @@ methods: {
 - Si la cosa se complica o hay muchos saltos, usa una store (lo veremos en conceptos avanzados)
 
 ## Ciclos de vida de un componente
-Saber el [ciclo de vida de un componente](https://vuejs.org/guide/essentials/lifecycle.html) nos ayuda a saber como usar los hooks y con ellos [disparar acciones asociados al ciclo de vida del componente](https://vuejs.org/api/options-lifecycle.html). como son beforeCreated() => created() => beforeMount() => mounted() => beforeUpdate() => updated(), beforeUnmount(), unmounted().
+Saber el [ciclo de vida de un componente](https://vuejs.org/guide/essentials/lifecycle.html) nos ayuda a saber como usar los hooks y con ellos [disparar acciones asociados al ciclo de vida del componente](https://vuejs.org/api/options-lifecycle.html). Como son beforeCreated() => created() => beforeMount() => mounted() => beforeUpdate() => updated(), beforeUnmount(), unmounted().
 
 Para la options API que reveremos, usaremos: https://vuejs.org/api/composition-api-lifecycle.html
 
-## Slots
-Los [slots](https://vuejs.org/guide/components/slots.html#slots) nos permiten pasar un template o código html a un componente. De esta manera podemos tener un componente y nosotros pasar el aspecto que quiera.
+![ciclo](https://vuejs.org/assets/lifecycle.16e4c08e.png)
 
-## Etilos condicionales
-En Vue.js podemos usar [clases y estilos condicionales de CSS](https://vuejs.org/guide/essentials/class-and-style.html) y de esta manera podemos cambiar el aspecto de un componente en función de su estado.
+
+
+## Elementos dependientes del estado o similar
+Podemos hacer uso de ellos por ejemplo poniendo : y el valor de la propiedad que queremos usar. Por ejemplo si queremos que una imagen o texto cambie en función de una propiedad, podemos usarlo:
+
+```html
+<img :src="image" alt="imagen" />
+```
+
+## Estilos condicionales
+Es una ampliación del anterior. En Vue.js podemos usar [clases y estilos condicionales de CSS](https://vuejs.org/guide/essentials/class-and-style.html) y de esta manera podemos cambiar el aspecto de un componente en función de su estado.
 ```js
 data() {
   return {
@@ -111,7 +121,7 @@ data() {
 <div class="static active"></div>
 ```
 
-Referencias al Templeate
+## Referencias a elementos del template
 Podemos hacer referencias a cualquier elemento del DOM del template usando [ref](https://vuejs.org/guide/essentials/template-refs.html). De esta manera podemos acceder a él desde el script y hacer lo que queramos con él. Por ejemplo, podemos usarlo para hacer focus en un input.
 
 ```html
@@ -120,7 +130,23 @@ Podemos hacer referencias a cualquier elemento del DOM del template usando [ref]
 
 ```js
 this.$refs.input.focus()
-```js
+```
+
+## Slots
+Los [slots](https://vuejs.org/guide/components/slots.html#slots) nos permiten pasar un template o código html a un componente. De esta manera podemos tener un componente y nosotros pasar el aspecto que quiera.
+
+![Slots](https://vuejs.org/assets/slots.dbdaf1e8.png)
+
+Sin embargo, hay casos en los que podría ser útil si el contenido de un slot puede hacer uso de datos tanto del ámbito principal como del secundario. Para lograr eso, necesitamos una forma de que se pasen datos entre ambos. Son los scoped slots.
+
+![Scoped Slots](https://vuejs.org/assets/scoped-slots.1c6d5876.svg)
+
+
+```html
+<MyComponent v-slot="slotProps">
+  {{ slotProps.text }} {{ slotProps.count }}
+</MyComponent>
+```
 
 
 ## Referencias 
