@@ -30,7 +30,7 @@ Comenzaremos con las bases de Vue.js
 Abordaremos los temas a nivel intermedio de Vue.js
 
 ## Propiedades
-Las [propiedades](https://vuejs.org/guide/components/props.html#props) son las variables que se le pasan al componente para instanciarlo. De esta manera podemos parametrizarlo para reutilizarlo. Pueden ser requeridas o no, además podemos tiparlas o darles un valor por defecto. también podemos validarlas.
+Las [propiedades](https://vuejs.org/guide/components/props.html#props) son las variables que se le pasan al componente para instanciarlo. De esta manera podemos parametrizarlo para reutilizarlo. Pueden ser requeridas o no, además podemos tiparlas o darles un valor por defecto. También podemos validarlas para filtrar el valor asignado.
 
 ```js
 // Mis propiedades
@@ -56,11 +56,11 @@ Las [propiedades](https://vuejs.org/guide/components/props.html#props) son las v
 
 ## Eventos
 
-De la misma manera que con las propiedades nos sirven para pasarles valores del padre al hijo, los [eventos](https://vuejs.org/guide/components/events.html) nos sirven para pasarles valores del hijo al padre. Usaremos emits
+De la misma manera que las propiedades nos sirven para pasar valores del padre al hijo, los [eventos](https://vuejs.org/guide/components/events.html) nos sirven para pasar valores del hijo al padre. Usaremos emits para hacerlo.
 
 ```js
 // desde el componente hijo que emite el evento
-// eventos que emito hay qeu anunciarlos
+// eventos que emito hay que anunciarlos
 emits: ['question-response'],
   //...
   // Mandamos el evento y su parámetro, si lo hay
@@ -85,9 +85,9 @@ methods: {
 - Si la cosa se complica o hay muchos saltos, usa una store (lo veremos en conceptos avanzados)
 
 ## Ciclos de vida de un componente
-Saber el [ciclo de vida de un componente](https://vuejs.org/guide/essentials/lifecycle.html) nos ayuda a saber como usar los hooks y con ellos [disparar acciones asociados al ciclo de vida del componente](https://vuejs.org/api/options-lifecycle.html). Como son beforeCreated() => created() => beforeMount() => mounted() => beforeUpdate() => updated(), beforeUnmount(), unmounted().
+Saber el [ciclo de vida de un componente](https://vuejs.org/guide/essentials/lifecycle.html) nos ayuda a saber como usar los hooks y con ellos [disparar acciones asociadas al ciclo de vida del componente](https://vuejs.org/api/options-lifecycle.html). Como son beforeCreated() => created() => beforeMount() => mounted() => beforeUpdate() => updated(), beforeUnmount(), unmounted().
 
-Para la options API que reveremos, usaremos: https://vuejs.org/api/composition-api-lifecycle.html
+Para la options API que veremos más adelante, usaremos: https://vuejs.org/api/composition-api-lifecycle.html
 
 ![ciclo](https://vuejs.org/assets/lifecycle.16e4c08e.png)
 
@@ -133,7 +133,7 @@ this.$refs.input.focus()
 ```
 
 ## Slots
-Los [slots](https://vuejs.org/guide/components/slots.html#slots) nos permiten pasar un template o código html a un componente. De esta manera podemos tener un componente y nosotros pasar el aspecto que quiera.
+Los [slots](https://vuejs.org/guide/components/slots.html#slots) nos permiten pasar un template o código html a un componente. De esta manera podemos tener un componente y nosotros pasar el aspecto que se quiera, es decir, personalizar su template.
 
 ![Slots](https://vuejs.org/assets/slots.dbdaf1e8.png)
 
