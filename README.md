@@ -11,6 +11,7 @@ Material del curso de formación del profesorado de la Comunidad de Madrid: Desa
 - [Vue.js para Profesores de la Comunidad de Madrid 2022-2022](#vuejs-para-profesores-de-la-comunidad-de-madrid-2022-2022)
   - [Acerca de](#acerca-de)
   - [Contenidos](#contenidos)
+  - [Road Map](#road-map)
   - [Referencias](#referencias)
   - [Autor](#autor)
     - [Contacto](#contacto)
@@ -23,9 +24,15 @@ Este repositorio engloba el conjunto de materiales y proyectos del curso de form
 Estos materiales se irán actualizando a medida que se vaya impartiendo el curso de acuerdo a las necesidades del alumnado.
 
 ## Contenidos
-1. [Preparación del entorno de trabajo](/01-Entorno/README.md)
-2. [Introducción a JavaScript moderno](/02-IntroJS/README.md)
-3. [Introductorio a Vue.js](/03-IntroVuejs/README.md)
+1. [Preparación del entorno de trabajo](./01-Entorno-Preparacion/README.md)
+2. [Introducción a JavaScript moderno](./02-Intro-JS/README.md)
+3. [Introductorio a Vue.js](./03-Intro-Vuejs/README.md)
+4. [Vue.js Inicial](/04-Vuejs-Inicial/README.md)
+5. [Vue.js Intermedio](/05-Vuejs-Intermedio/README.md)
+
+
+## Road Map
+Os dejo un pequeño [road map](https://roadmap.sh/vue) sobre lo necesario para aprender Vue.js y JavaScript.
 
 
 ## Referencias
