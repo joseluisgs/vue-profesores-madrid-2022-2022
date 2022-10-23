@@ -98,13 +98,13 @@
         console.log('incrementar')
         this.contador++
         // Emitimos el evento que ha cambiado el valor
-        this.$emit('valor-actualizado', this.contador)
+        //this.$emit('valor-actualizado', this.contador)
       },
       decrementar() {
         console.log('decrementar')
         this.contador--
         // Emitimos el evento que ha cambiado el valor
-        this.$emit('valor-actualizado', this.contador)
+        //this.$emit('valor-actualizado', this.contador)
       },
     },
     // Propiedades computadas
@@ -126,6 +126,10 @@
           this.negativo = true
         } else {
           this.negativo = false
+        }
+        // Pase lo que pase emitimos el evento con el valor
+        if (nuevoValor !== valorAnterior && nuevoValor >= 0) {
+          this.$emit('valor-actualizado', this.contador)
         }
       },
     },

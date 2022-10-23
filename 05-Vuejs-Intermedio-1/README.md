@@ -1,6 +1,6 @@
-# Vue.js Intermedio
+# Vue.js Intermedio: Comunicación de Componentes
 
-Comenzaremos con las bases de Vue.js
+Propiedades y eventos y bases de la comunicación entre componentes.
 
 
 [![Vue Ready](https://img.shields.io/badge/Code-Vue.js-%2342b983)](https://es.vuejs.org/)
@@ -9,7 +9,7 @@ Comenzaremos con las bases de Vue.js
 
 ![Vue.js](../images/vue-intermedio.jpg)
 
-- [Vue.js Intermedio](#vuejs-intermedio)
+- [Vue.js Intermedio: Comunicación de Componentes](#vuejs-intermedio-comunicación-de-componentes)
   - [Acerca de](#acerca-de)
   - [Propiedades](#propiedades)
   - [Eventos](#eventos)

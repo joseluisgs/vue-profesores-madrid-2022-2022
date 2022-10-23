@@ -20,6 +20,12 @@
                 </div>
             </slot> -->
     </div>
+    <button
+      class="close"
+      @click="$emit('onClose')"
+    >
+      CERRAR DESDE MODAL
+    </button>
   </div>
 </template>
 

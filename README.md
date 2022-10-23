@@ -28,7 +28,8 @@ Estos materiales se irán actualizando a medida que se vaya impartiendo el curso
 2. [Introducción a JavaScript moderno](./02-Intro-JS/README.md)
 3. [Introductorio a Vue.js](./03-Intro-Vuejs/README.md)
 4. [Vue.js Inicial](/04-Vuejs-Inicial/README.md)
-5. [Vue.js Intermedio](/05-Vuejs-Intermedio/README.md)
+5. [Vue.js Intermedio: Comunicación de Componentes](/05-Vuejs-Intermedio-1/README.md)
+6. [Vue.js Intermedio: Compositions API](/06-Vuejs-Intermedio-2/README.md)
 
 
 ## Road Map

@@ -50,39 +50,27 @@
   </Modal>
 </template>
 
-<script>
+<script setup>
   import Contador from '@/components/Contador.vue'
   import Modal from '@/components/Modal.vue'
-  export default {
-    name: 'App',
-    // Componentes que uso
-    components: {
-      Contador,
-      Modal,
-    },
+  import { ref } from 'vue'
 
-    // Mi estado
-    data() {
-      return {
-        // Contador
-        valorActual: 0, // Para el evento
-        valorPropiedadContador: 1, // Para ever el binding
-        isOpen: false, // Para el modal
-      }
-    },
+  // Mi estado
+  const valorActual = ref(0) // Para el evento
+  const valorPropiedadContador = ref(78) // Para ever el binding
+  const isOpen = ref(false) // Para el modal
 
-    // Mis métodos
-    methods: {
-      actualizarValorActual(valorRecibido) {
-        this.valorActual = valorRecibido
-      },
-      openModal() {
-        this.isOpen = true
-      },
-      closeModal() {
-        this.isOpen = false
-      },
-    },
+  // Mis métodos
+
+  const actualizarValorActual = (valorRecibido) => {
+    this.valorActual = valorRecibido
+  }
+  const openModal = () => {
+    this.isOpen = true
+  }
+  // Por si no quieres usar arrow function
+  function closeModal() {
+    this.isOpen = false
   }
 </script>
 
@@ -99,7 +87,7 @@
     padding-right: 1.25rem;
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
-    color: #2563eb;
+    color: #a6eb25;
     font-size: 1.125rem;
     line-height: 1.75rem;
     font-weight: 700;
