@@ -41,21 +41,21 @@ Options API se centra en el concepto de una "instancia de componente", que gener
 
 Composition API se centra en declarar variables de estado reactivas directamente en el ámbito de una función y componer el estado de varias funciones juntas para manejar la complejidad. Tiene una forma más libre y requiere una comprensión de cómo funciona la reactividad en Vue para ser utilizado de manera efectiva. A cambio, su flexibilidad permite patrones más poderosos para organizar y reutilizar la lógica.
 
-Si es nuevo en Vue, te recomiendo:
+Si eres nuevo en Vue, te recomiendo:
 
 Para propósitos de aprendizaje, elige el estilo que te parezca más fácil de entender. Una vez más, la mayoría de los conceptos básicos se comparten entre los dos estilos. Siempre puedes elegir el otro estilo más tarde.
 
 Para uso en producción:
 
-- Usa con la API de opciones si no está utilizando herramientas de compilación, o planea usar Vue principalmente en escenarios de baja complejidad.
-- Elija Composición API + Componentes de un solo archivo si planea crear aplicaciones completas con Vue.
+- Usa con la API de opciones si no está utilizando herramientas de compilación, o planeas usar Vue principalmente en escenarios de baja complejidad.
+- Elija Composición API + Componentes de un solo archivo si planeas crear aplicaciones completas con Vue.
 
 [Aquí una comparación](https://vuejs.org/guide/extras/composition-api-faq.html#more-flexible-code-organization)
 
 ### Estructura
 
-A partir de ahora tenemos una función [setup](https://vuejs.org/api/composition-api-setup.html) que sirve de punto de entrada devolviendo (return) o exponiendo públicamente aquellos elementos que necesitamos en las vistas. Ademas importaremos aquellos elementos que necesitemos en todo momento (más eficiente el código).
-Siempre tomamos de setup como parametrosm primero las props, y luego el contexto: setup(props, context)
+A partir de ahora tenemos una función [setup](https://vuejs.org/api/composition-api-setup.html) que sirve de punto de entrada devolviendo (return) o exponiendo públicamente aquellos elementos que necesitamos en las vistas. Además, importaremos aquellos elementos que necesitemos en todo momento (más eficiente el código).
+Siempre tomamos de setup como parámetros primero las props, y luego el contexto: setup(props, context)
 
 ```js
 <script>
@@ -98,7 +98,7 @@ export default {
 }
 ```
 
-Podemos usar desestructucturación para recibir solo lo que necesitamos.
+Podemos usar desestructuración para recibir solo lo que necesitamos.
 ```js
 export default {
   setup(props, { attrs, slots, emit, expose }) {
@@ -149,7 +149,7 @@ const plusOne = computed({
 
 ## Watcher
 
-Tenemos de [distinto tipo](https://vuejs.org/api/reactivity-core.html#watch), permitiéndonos reaccionar mientras observamos cambios a variables de nuestro estado.
+Tenemos de [distinto tipo](https://vuejs.org/api/reactivity-core.html#watch), permitiéndonos reaccionar a cambios en referencias reactivas.
 
 ```js
 const count = ref(0)
@@ -228,9 +228,9 @@ Puedes usar Composition u Option, e incluso en el mismo componente ambos. Puedes
 
 ## Script Setup
 Es la nueva forma [recomendada](https://vuejs.org/api/sfc-script-setup.html) de usar la Composition API y tienes varias ventajas:
-- Código más sucinto con menos repetitivo
-- Capacidad para declarar propiedades y eventos emitidos usando TypeScript puro
-- Variables reactivas y componentes se exponen de manera automática (si no usa private)
+- Código más compacto y legible.
+- Capacidad para declarar propiedades y eventos emitidos usando TypeScript puro.
+- Variables reactivas y componentes importados se exponen de manera automática (si no usa private)
 - Mejor rendimiento en tiempo de ejecución (la plantilla se compila en una función de representación en el mismo ámbito, sin un proxy intermedio)
 - Mejor rendimiento de inferencia de tipo IDE (menos trabajo para que el servidor de idioma extraiga tipos del código)
 - Es importante tener Volar como extensión.
