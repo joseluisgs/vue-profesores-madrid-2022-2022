@@ -75,8 +75,8 @@
     // Mis métodos
     methods: {
       // Buscar pokemon
-      searchPokemon(search) {
-        this.search = search
+      searchPokemon(searchBuscador) {
+        this.search = searchBuscador
       },
       // Cargar Pokemons
       async loadPokemons(max = 25) {
@@ -96,7 +96,7 @@
         this.openModal()
       },
       deletePokemon() {
-        this.pokemons = this.pokemons.filter((p) => p.name !== this.pokemonSelected.name)
+        this.pokemons = this p.name !== this.pokemonSelected.name)
         this.closeModal()
       },
 
