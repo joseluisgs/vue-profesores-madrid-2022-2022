@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import DetailsView from '../views/DetailsView.vue'
 import HomeView from '../views/HomeView.vue'
+import SubViewList from '../views/SubView/SubViewList.vue'
 // Guardas
 import isAuthenticatedGuard from '@/router/auth-guard'
 
@@ -25,6 +27,38 @@ const router = createRouter({
       component: () => import('../views/AutenticadaView.vue'),
       // Vamos a protegerla
       beforeEnter: [isAuthenticatedGuard],
+    },
+    // pagina detalle, con query!
+    {
+      path: '/:id',
+      name: 'details',
+      component: DetailsView,
+      // Le pasamos props a la vista DetailsPage
+      props: (route) => {
+        const id = Number(route.params.id) // Si no se puede lo mandamos a 404
+        return isNaN(id) ? router.push({ name: '404' }) : { id: id }
+      },
+      meta: { title: 'Details Page' },
+    },
+    {
+      path: '/subview',
+      name: 'subview',
+      // Lazy, se carga solo cuando se accede a la ruta
+      component: () => import('../views/SubView.vue'),
+      children: [
+        {
+          path: '',
+          name: 'subview-list',
+          meta: { title: 'SubView List' },
+          component: SubViewList,
+        },
+        {
+          path: 'about',
+          name: 'subview-about',
+          component: () => import('@/views/SubView/SubViewAbout.vue'), // Lazy loading
+          meta: { title: 'SubView About' },
+        },
+      ],
     },
     // a google
     {
