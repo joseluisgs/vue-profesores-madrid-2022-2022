@@ -30,6 +30,8 @@ Estos materiales se irán actualizando a medida que se vaya impartiendo el curso
 4. [Vue.js Inicial](/04-Vuejs-Inicial/README.md)
 5. [Vue.js Intermedio: Comunicación de Componentes](/05-Vuejs-Intermedio-1/README.md)
 6. [Vue.js Intermedio: Compositions API](/06-Vuejs-Intermedio-2/README.md)
+7. [Vue.js Avanzado: Router](/07-Vuejs-Avanzado-Router/EJERCICIOS.md)
+8. [Vue.js Avanzado: Store](/07-Vuejs-Avanzado-Store/README.md)
 
 
 ## Road Map
