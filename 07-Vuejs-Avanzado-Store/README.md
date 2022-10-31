@@ -13,6 +13,19 @@ Pinia y Storage
   - [Storage](#storage)
   - [Store](#store)
   - [Pinia](#pinia)
+    - [State](#state)
+    - [Getters](#getters)
+    - [Actions](#actions)
+    - [Modulos](#modulos)
+    - [Ejemplo](#ejemplo)
+  - [Composition API y Pinia](#composition-api-y-pinia)
+    - [Acceso al estado](#acceso-al-estado)
+    - [Acciones](#acciones)
+    - [Computed](#computed)
+  - [Options API y Pinia](#options-api-y-pinia)
+    - [Acceso al State](#acceso-al-state)
+    - [Acciones](#acciones-1)
+    - [Getters](#getters-1)
   - [Ejercicios](#ejercicios)
   - [Autor](#autor)
     - [Contacto](#contacto)
@@ -42,6 +55,9 @@ localStorage.clear();
 ## Store
 En Vue.js y en otros frameworks, una store central, o store, es un objeto que contiene el estado de la aplicación. Y este estado es compartido por los componentes que lo requieran.
 
+ Con ello nos facilitan el intercambio y acceso de información sin sobrecargar propiedades y eventos cuando el nivel de jerarquía es alto, se comparten numerosas rutas o simplemente simplifica la lógica de nuestros componentes y test.
+
+
 En Vue.js, el store se basa en otros conocidos como [Flux/Redux](https://medium.com/nowports-tech/aprendiendo-a-implementar-redux-5eb8745e7552) o [Vuex](https://vuex.vuejs.org/). En este caso, vamos a usar Pinia, una librería que nos permite gestionar el estado de nuestra aplicación de forma sencilla y eficiente.
 
 Una store esta formada por:
@@ -56,6 +72,85 @@ Los elementos de una estore en Pinia son:
 - State (Estado): El estado de la aplicación o conjunto de datos que queremos gestionar.
 - Getters: Funciones que devuelven datos calculados a partir del estado.
 - Actions (Acciones): Funciones que realizan operaciones síncronas y asíncronas y que modifican el estado de la aplicación.
+
+### State
+
+Es el estado reactivo compartido
+
+```js
+state: () => {
+    return {
+      counter: 0,
+      name: 'Pepe',
+      isAdmin: true,
+    }
+  },
+```
+
+### Getters
+
+Son las propiedades computadas sobre elementos del estado de la store.
+
+```js
+state: () => ({
+  counter: 0,
+}),
+getters: {
+  doubleCount: (state) => state.counter * 2,
+},
+```
+
+### Actions
+
+Son funciones que pueden ser síncronas o asíncrona y que modifican el estado. De esta manera lo encapsulamos.
+
+```js
+state: () => ({
+  counter: 0,
+  userData: null,
+}),
+actions: {
+  increment() {
+    this.counter++
+  },
+  randomizeCounter() {
+    this.counter = Math.round(100 * Math.random())
+  },
+  async registerUser(login, password) {
+    try {
+      this.userData = await api.post({ login, password })
+    } catch (error) {
+      return error
+    }
+  },
+},
+```
+
+### Modulos
+
+Se puede definir cada store por separado dividiendo su lógica e importase o usarse una dentro de otra o en distintos componentes.
+
+```js
+import { defineStore } from 'pinia'
+import { useUserStore } from './user'
+
+export const useCartStore = defineStore('cart', {
+  actions: {
+    async orderCart() {
+      const user = useUserStore()
+
+      try {
+        await apiOrderCart(user.token, this.items)
+        this.emptyCart()
+      } catch (err) {
+        return err
+      }
+    },
+  },
+})
+```
+
+### Ejemplo
 
 ```js
 import { defineStore } from 'pinia'
@@ -100,6 +195,33 @@ console.log(counterStore.doubleCount) // 2
 
 ```
 
+## Composition API y Pinia
+
+### Acceso al estado
+
+Importamos el store como un elemento más y accedemos por sus propiedades en el state.
+
+### Acciones
+
+Simplemente llamamos al método, sea síncrono o asíncrono.
+
+### Computed
+
+Son una variable mas, como un computer mas
+
+## Options API y Pinia
+
+### Acceso al State
+
+Para manejar el [estado](https://pinia.vuejs.org/core-concepts/state.html#usage-with-the-options-api), usaremos mapState para opener un estado de solo lectura, o mapWritableState() para lectura escritura.
+
+### Acciones
+
+Usamos para manejar las [acciones](https://pinia.vuejs.org/core-concepts/actions.html#without-setup) mapActions y la acción a ejecutar ya sean síncronas o asíncronas.
+
+### Getters
+
+Se usa mapState
 
 ## Ejercicios
 Este tema tiene varios ejercicios, puedes realizarlos [aquí](./EJERCICIOS.md)
