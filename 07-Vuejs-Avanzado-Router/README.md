@@ -41,11 +41,16 @@ Una Single-Page Application (SPA) es un tipo de aplicación web que ejecuta todo
 
 Respecto a las URLs del navegador, existe la posibilidad de que se vayan modificando en la barra de direcciones a medida que intercambiamos las vistas. Como hemos dicho, no se cambia la página, pero sí el contenido. Otorgar una URL propia a cada pantalla es muy útil de cara a aspectos como la navegabilidad o para compartirla.
 
+![img01](https://user-images.githubusercontent.com/32254689/71607747-58fdd700-2bbf-11ea-90d9-08ba4c8fea72.png)
+
+
 ### Creando rutas
 
 ## Vue Router
 
 [Vue Router](https://router.vuejs.org/api/interfaces/routeroptions.html#history) es el componente de Vue que nos permite navegar entre páginas o vistas. Se define en un fichero con las rutas.
+
+![img02](https://miro.medium.com/max/1200/1*0rItCaXRjYFvhdhtLahUXw.png)
 
 ```js
 const router = createRouter({

@@ -57,6 +57,8 @@ En Vue.js y en otros frameworks, una store central, o store, es un objeto que co
 
  Con ello nos facilitan el intercambio y acceso de información sin sobrecargar propiedades y eventos cuando el nivel de jerarquía es alto, se comparten numerosas rutas o simplemente simplifica la lógica de nuestros componentes y test.
 
+ ![img1](https://vuex.vuejs.org/flow.png)
+
 
 En Vue.js, el store se basa en otros conocidos como [Flux/Redux](https://medium.com/nowports-tech/aprendiendo-a-implementar-redux-5eb8745e7552) o [Vuex](https://vuex.vuejs.org/). En este caso, vamos a usar Pinia, una librería que nos permite gestionar el estado de nuestra aplicación de forma sencilla y eficiente.
 
@@ -64,6 +66,8 @@ Una store esta formada por:
 - Estado: El estado de la aplicación o conjunto de datos que queremos gestionar.
 - Mutaciones: Funciones que modifican el estado de la aplicación.
 - Acciones: Funciones que realizan operaciones asíncronas y que pueden llamar a mutaciones.
+
+![img2](https://vuex.vuejs.org/vuex.png)
 
 ## Pinia
 [Pinia](https://pinia.vuejs.org/) es el store oficial de Vue.js que ha sustituido a Vuex, de hecho es Vuex 5 con otro nombre. Es una librería que nos permite gestionar el estado de nuestra aplicación de forma sencilla y eficiente. Además, encaja perfectamente si usamos TypeScript. Pinia se basa en el uso de un composable para manejar el estado de la aplicación.
