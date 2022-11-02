@@ -1,6 +1,6 @@
 # Vue.js avanzado: Vue Router
 
-Vue Router
+Vue Router y rutas en Vue.js
 
 
 [![Vue Ready](https://img.shields.io/badge/Code-Vue.js-%2342b983)](https://es.vuejs.org/)
@@ -29,7 +29,7 @@ Vue Router
   - [Licencia de uso](#licencia-de-uso)
 
 ## Acerca de
-Vue Router es una librería que nos permite gestionar las rutas de nuestra aplicación. Es decir, nos permite navegar entre distintas vistas de nuestra aplicación.
+Vue Router es una librería que nos permite gestionar las rutas de nuestra aplicación. Es decir, nos permite navegar entre distintas vistas o páginas de nuestra aplicación y mostrar una url personalizada para ello.
 
 ## Vue Router
 
@@ -92,7 +92,13 @@ export default router
 
 ### Router Link
 
-Nos permite crear enlaces a los componentes de Vue como si fueran etiquetas <a href="http://...">...</a>. Es decir, nos permite navegar entre las rutas de nuestra aplicación.
+Nos permite crear enlaces a los componentes de Vue como si fueran etiquetas: 
+
+```html
+<a href="http://#">Mi enlace</a>
+```
+
+Es decir, nos permite navegar entre las rutas de nuestra aplicación.
 
 ```html
 <nav>
@@ -188,7 +194,7 @@ Podemos hacerlo usado [props](https://router.vuejs.org/guide/essentials/passing-
 
 ### Rutas Hijas y Multiple Router View
 
-Podemos renderizar una vista hija en una vista padre usando el componente [children](https://router.vuejs.org/guide/essentials/nested-routes.html) de las rutas. Estas se rederizarán dentro de un componente padre pudiéndose anidar ruoter view.
+Podemos renderizar una vista hija en una vista padre usando el componente [children](https://router.vuejs.org/guide/essentials/nested-routes.html) de las rutas. Estas se rederizarán dentro de un componente padre pudiéndose anidar router view.
 
 ```js
 const routes = [

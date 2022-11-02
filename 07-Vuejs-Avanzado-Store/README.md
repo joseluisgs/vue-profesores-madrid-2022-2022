@@ -16,7 +16,7 @@ Pinia y Storage
     - [State](#state)
     - [Getters](#getters)
     - [Actions](#actions)
-    - [Modulos](#modulos)
+    - [Módulos](#módulos)
     - [Ejemplo](#ejemplo)
   - [Composition API y Pinia](#composition-api-y-pinia)
     - [Acceso al estado](#acceso-al-estado)
@@ -37,6 +37,8 @@ En esta unidad vamos a ver como podemos usar el storage del navegador para almac
 
 ## Storage
 El [storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage) es una forma de almacenar datos en el navegador. Estos datos se almacenan en el navegador del usuario y se pueden recuperar cuando el usuario vuelva a la página. Esto nos permite almacenar datos de forma persistente en el navegador. Podemos usarlo para guardar preferencias o información a ser recuperada en cada acceso. Se utiliza como un diccionario o mapa basado en clave-valor.
+
+Se recomienda no abusar de éste almacenamiento y no hacer uso de él para datos sensibles, pues en cualquier momento se puede consultar desde el navegador.
 
 ```js
 // Almacenar
@@ -62,13 +64,13 @@ En Vue.js y en otros frameworks, una store central, o store, es un objeto que co
 
 En Vue.js, el store se basa en otros conocidos como [Flux/Redux](https://medium.com/nowports-tech/aprendiendo-a-implementar-redux-5eb8745e7552) o [Vuex](https://vuex.vuejs.org/). En este caso, vamos a usar Pinia, una librería que nos permite gestionar el estado de nuestra aplicación de forma sencilla y eficiente.
 
-Una store esta formada por:
+Una store está formada por:
 - Estado: El estado de la aplicación o conjunto de datos que queremos gestionar.
 - Mutaciones: Funciones que modifican el estado de la aplicación.
 - Acciones: Funciones que realizan operaciones asíncronas y que pueden llamar a mutaciones.
 
 ![img2](https://vuex.vuejs.org/vuex.png)
-
+****
 ## Pinia
 [Pinia](https://pinia.vuejs.org/) es el store oficial de Vue.js que ha sustituido a Vuex, de hecho es Vuex 5 con otro nombre. Es una librería que nos permite gestionar el estado de nuestra aplicación de forma sencilla y eficiente. Además, encaja perfectamente si usamos TypeScript. Pinia se basa en el uso de un composable para manejar el estado de la aplicación.
 
@@ -130,9 +132,9 @@ actions: {
 },
 ```
 
-### Modulos
+### Módulos
 
-Se puede definir cada store por separado dividiendo su lógica e importase o usarse una dentro de otra o en distintos componentes.
+Se puede definir cada store por separado dividiendo su lógica y poder usarse una dentro de otra o en distintos componentes.
 
 ```js
 import { defineStore } from 'pinia'
@@ -211,7 +213,7 @@ Simplemente llamamos al método, sea síncrono o asíncrono.
 
 ### Computed
 
-Son una variable mas, como un computer mas
+Son una variable más computada más
 
 ## Options API y Pinia
 
