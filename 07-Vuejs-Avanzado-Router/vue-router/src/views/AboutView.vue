@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <h1>Hola Profeso de Vue.js</h1>
+    <h1>Hola Profesores de Vue.js</h1>
   </div>
 </template>
 

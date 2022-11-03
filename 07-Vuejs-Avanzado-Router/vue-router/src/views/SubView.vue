@@ -4,7 +4,7 @@
     <p>Soy una SubView</p>
     <p>Aquí se verán mis hijos!!</p>
 
-    <router-view></router-view>
+    <RouterView />
   </div>
 </template>
 
