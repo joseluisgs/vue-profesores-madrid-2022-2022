@@ -18,7 +18,8 @@ const router = createRouter({
       // Le pasamos props a la vista DetailsPage
       props: (route) => {
         const id = Number(route.params.id) // Si no se puede lo mandamos a 404
-        return isNaN(id) ? router.push({ name: '404' }) : { id: id }
+        // Devolvemos los props del componente a usar
+        return isNaN(id) ? router.push({ name: '404' }) : { id: id, query: route.query }
       },
       meta: { title: 'Pokemon Details Page' },
     },

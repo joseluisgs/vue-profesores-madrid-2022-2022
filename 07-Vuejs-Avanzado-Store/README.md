@@ -18,6 +18,7 @@ Pinia y Storage
     - [Actions](#actions)
     - [Módulos](#módulos)
     - [Ejemplo](#ejemplo)
+    - [Composable Store con Pinia](#composable-store-con-pinia)
   - [Composition API y Pinia](#composition-api-y-pinia)
     - [Acceso al estado](#acceso-al-estado)
     - [Acciones](#acciones)
@@ -198,6 +199,44 @@ console.log(counterStore.count) // 0
 counterStore.increment()
 console.log(counterStore.count) // 1
 console.log(counterStore.doubleCount) // 2
+
+```
+
+### Composable Store con Pinia
+Una de las cosas que podemos hacer con Pinia es crear un composable que nos permita usar el store en cualquier componente de la aplicación. De esta manera podemos hacer visible los elementos del store que queramos y encapsular la lógica de la store. En el ejemplo anterior el estado es accesible y se podría mutar sin ninguna acción. Vamos a evitarlos con un composable haciendo return de lo que queremos que sea accesible. El uso de la store sigue siendo el mismo desde el componente.
+
+```js
+import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
+
+export const useCounterStore = defineStore('counter', {
+  // Estado de la aplicación
+  const count = ref(0)
+  
+  // Getters pasan a ser computed 
+  const doubleCount = computed(() => count.value * 2)
+
+  // Acciones: son funciones que realizan operaciones síncronas y asíncronas y que modifican el estado de la aplicación.
+  const increment = () => {
+    count.value++
+  }
+  const randomizeCounter = () => {
+    count.value = Math.round(100 * Math.random())
+  }
+
+  // podríamos hacer un watch sobre el estado y lanzar una acción cuando cambie si fuera necesario
+  watch(count, (newValue, oldValue) => {
+    console.log('count changed', newValue, oldValue)
+  })
+
+  // Devolvemos lo que queremos que sea accesible
+  return {
+    // count, --> No queremos que sea accesible/visible
+    doubleCount,
+    increment,
+    randomizeCounter,
+  }
+})
 
 ```
 

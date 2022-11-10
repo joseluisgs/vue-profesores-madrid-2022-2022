@@ -6,12 +6,13 @@
   </td>
   <td>
     <button @click="removePokemon(pokemon)">-</button>
+    <button @click="investigarPokemon(pokemon)">+</button>
   </td>
 </template>
 
 <script setup>
   import { computed } from 'vue'
-  import { RouterLink } from 'vue-router'
+  import { RouterLink, useRouter } from 'vue-router'
 
   // Mis props, no hace falta almacenarlas porque no accedemos a ellas
   const props = defineProps({
@@ -20,6 +21,9 @@
       required: true,
     },
   })
+
+  const router = useRouter()
+
   // Mis eventos
   const emit = defineEmits(['remove-pokemon', 'info-pokemon'])
 
@@ -27,6 +31,11 @@
   // const removePokemon = (pokemon) => {
   function removePokemon(pokemon) {
     emit('remove-pokemon', pokemon)
+  }
+
+  const investigarPokemon = (pokemon) => {
+    const myId = pokemon.url.split('/')[6]
+    router.push({ name: 'PokemonDetails', params: { id: myId }, query: { pokemonId: myId } })
   }
 
   // Obtener id del pokemon computed

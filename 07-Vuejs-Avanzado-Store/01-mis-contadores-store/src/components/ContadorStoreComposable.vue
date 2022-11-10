@@ -1,6 +1,6 @@
 <template>
-  <h2>Contador Store Composition API</h2>
-  <p>Valor: {{ counterStore.counter }}</p>
+  <h2>Contador Store con Composable</h2>
+  <p>Valor: {{ counterStore.actualValue }}</p>
   <p>Doble: {{ counterStore.doubleCount }}</p>
   <button @click="incrementar">+</button>
   <button @click="decrementar">-</button>
@@ -19,12 +19,12 @@
 </template>
 
 <script setup>
-  import { CounterStore } from '@/stores/counter'
+  import { useCounterStore } from '@/stores/counter-composable'
   import { LoadingStore } from '@/stores/loading'
   import { onUpdated } from 'vue'
 
   // accedemos a la store
-  const counterStore = CounterStore()
+  const counterStore = useCounterStore()
   const loadingStore = LoadingStore()
 
   // Al cargar el componente leemos del storage
@@ -32,9 +32,9 @@
 
   // Al acutalizar el componente guardamos en el storage
   // podriamos usar watchers
-  onUpdated(() => {
-    counterStore.saveToStorage()
-  })
+  // onUpdated(() => {
+  //   counterStore.saveToStorage()
+  // })
 
   // Encapsulamos con metodos
   const incrementar = () => {

@@ -1,4 +1,9 @@
 <template>
+  <p>Param Pokemon ID: {{ route.params.id }}</p>
+  <p>Query Pokemon ID: {{ route.query }}</p>
+  <p>Props Pokemon ID: {{ props.id }}</p>
+  <p>Props Pokemon ID: {{ props.query }}</p>
+
   <div v-if="pokemonSelected.name">
     <h2 class="header">{{ pokemonSelected.name }}</h2>
     <article class="body">
@@ -23,18 +28,24 @@
 </template>
 
 <script setup>
-  import { watch, ref } from 'vue'
-  import { useRouter } from 'vue-router'
   import axios from 'axios'
+  import { ref, watch } from 'vue'
+  import { useRouter, useRoute } from 'vue-router'
   // Vamos a pasarle unas propiedades!!!
+
   const props = defineProps({
     id: {
       type: Number,
       required: true,
     },
+    query: {
+      type: Object,
+      required: true,
+    },
   })
 
   const router = useRouter()
+  const route = useRoute()
 
   const pokemonSelected = ref({})
 
@@ -49,12 +60,11 @@
 
   getPokemon()
 
-  // Watcher sobre una prop en concreto
+  // Watcher sobre una prop en concreto por si las moscas!!
   watch(
     () => props.id,
     async () => {
       await getPokemon()
-      // podemos consultar una api o lo que sea por el detalle
     }
   )
 </script>
@@ -69,7 +79,7 @@
     text-align: center;
   }
   .pokemon-image {
-    width: 25%;
+    width: 15%;
     height: auto;
     margin: 0 auto;
     /** center */
