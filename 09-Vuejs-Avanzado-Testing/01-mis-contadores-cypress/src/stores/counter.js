@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref, computed, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 export const useCounterStore = defineStore('CounterStore', () => {
   // Estado reactivo

@@ -3,7 +3,7 @@
     @click="openModal"
     data-cy="open-button"
   >
-    Open Modal
+    Abrir modal
   </button>
 
   <Teleport to="body">
@@ -29,7 +29,7 @@
           @click="closeModal"
           data-cy="close-modal"
         >
-          Close
+          Cerrar
         </button>
       </div>
     </div>
@@ -37,9 +37,11 @@
 </template>
 <script setup>
   import { ref } from 'vue'
+
   const props = defineProps({
     color: String,
   })
+
   const emit = defineEmits(['modalOpened', 'modalClosed'])
   const open = ref(false)
   const contentColor = props.color ? props.color : 'white'

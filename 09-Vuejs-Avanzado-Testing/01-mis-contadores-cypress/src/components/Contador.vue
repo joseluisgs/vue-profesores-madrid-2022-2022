@@ -1,41 +1,63 @@
 <template>
   <h2>Contador Store con Composable</h2>
-  <p>Valor: {{ counterStore.actualValue }}</p>
-  <p>Doble: {{ counterStore.doubleCount }}</p>
-  <button @click="incrementar">+</button>
-  <button @click="decrementar">-</button>
+  <p data-cy="contador-valor">Valor: {{ contador }}</p>
+  <p data-cy="contador-doble">Doble: {{ doubleCount }}</p>
+  <button
+    @click="incrementar"
+    data-cy="boton-incrementar"
+  >
+    +
+  </button>
+  <button
+    @click="decrementar"
+    data-cy="boton-decrementar"
+  >
+    -
+  </button>
   <button
     @click="incrementarAsync"
-    :disabled="loadingStore.isLoading"
+    :disabled="isLoading"
+    data-cy="boton-incrementar-async"
   >
     Async +
   </button>
   <button
     @click="decrementarAsync"
-    :disabled="loadingStore.isLoading"
+    :disabled="isLoading"
+    data-cy="boton-decrementar-async"
   >
     Async -
   </button>
   <p
-    v-if="counterStore.actualValue < 0"
+    v-if="contador < 0"
     class="rojo"
+    data-cy="numeros-rojos"
   >
     Estás en número rojos
   </p>
-  <p v-else>Estás 😁</p>
-  <p :class="{ verde: divisbleEntre3 }">Es divisible entre 3: {{ divisbleEntre3 }}</p>
+  <p
+    v-else
+    data-cy="numeros-normales"
+  >
+    Estás 😁
+  </p>
+  <p
+    :class="{ verde: divisbleEntre3 }"
+    data-cy="es-divisible"
+  >
+    Es divisible entre 3: {{ divisbleEntre3 }}
+  </p>
   <p
     v-if="negativo"
     class="rojo"
+    data-cy="numeros-rojos"
   >
     No te pases que estás en negativo
   </p>
 </template>
 
 <script setup>
-  import { useCounterStore } from '@/stores/counter'
-  import { LoadingStore } from '@/stores/loading'
-  import { ref, computed, watch } from 'vue'
+  import { computed, ref, watch } from 'vue'
 
   const props = defineProps({
     // Valor inicial
@@ -48,40 +70,38 @@
   })
 
   // accedemos a la store
-  const counterStore = useCounterStore()
-  const loadingStore = LoadingStore()
 
+  const contador = ref(props.valorInicial)
+  const doubleCount = computed(() => contador.value * 2)
   const negativo = ref(false)
-  const contador = ref(counterStore.actualValue)
-
-  // Al cargar el componente leemos del storage
-  if (props.valorInicial == 0) counterStore.loadFromStorage()
-  else counterStore.setCounter(props.valorInicial)
+  const isLoading = ref(false)
 
   // Encapsulamos con metodos
   const incrementar = () => {
-    counterStore.increment()
+    contador.value++
   }
 
   const decrementar = () => {
-    counterStore.decrement()
+    contador.value--
   }
 
   const incrementarAsync = async () => {
     // Podriamos cambiar el estado aquí, pero lo hacemos en la store
-    loadingStore.setLoading(true)
-    await counterStore.incrementAsync(3)
-    loadingStore.setLoading(false)
+    isLoading.value = true
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+    contador.value++
+    isLoading.value = false
   }
 
   const decrementarAsync = async () => {
-    loadingStore.setLoading(true)
-    await counterStore.decrementAsync(3)
-    loadingStore.setLoading(false)
+    isLoading.value = true
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+    contador.value--
+    isLoading.value = false
   }
 
   const divisbleEntre3 = computed(() => {
-    return counterStore.actualValue % 3 === 0
+    return contador.value % 3 === 0
   })
 
   // Watcher
