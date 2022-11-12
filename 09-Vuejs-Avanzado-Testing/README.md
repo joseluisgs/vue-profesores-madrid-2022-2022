@@ -13,9 +13,13 @@ Testing con Cypress
   - [Testing Unitario en Vue.js](#testing-unitario-en-vuejs)
   - [Testing E2E en Vue.js](#testing-e2e-en-vuejs)
   - [CYPRESS](#cypress)
-    - [Asercciones](#asercciones)
+    - [Aserciones](#aserciones)
     - [Algunos métodos útiles de Cypress](#algunos-métodos-útiles-de-cypress)
-  - [Buenas pŕacticas](#buenas-pŕacticas)
+    - [Buenas prácticas](#buenas-prácticas)
+    - [Test unitarios sobre componentes](#test-unitarios-sobre-componentes)
+      - [Llamando a los test unitarios](#llamando-a-los-test-unitarios)
+    - [Test E2E de nuestra aplicación](#test-e2e-de-nuestra-aplicación)
+      - [Llamando a los test E2E](#llamando-a-los-test-e2e)
   - [Ejercicios](#ejercicios)
   - [Autor](#autor)
     - [Contacto](#contacto)
@@ -43,7 +47,7 @@ El testing E2E es una de las partes más importantes de cualquier aplicación. C
 
 ![img](https://panoramic.vc/wp-content/uploads/2021/02/Cypress_Logotype_Color_Light_BG-1-002.png)
 
-### Asercciones
+### Aserciones
 Puedes consultarlas [aquí](https://docs.cypress.io/guides/references/assertions.html). Pero se basan principalmente en [Chai](https://docs.cypress.io/guides/references/assertions.html#Chai) y [Sinon](https://docs.cypress.io/guides/references/assertions.html#Sinon-Chai).
 
 ### Algunos métodos útiles de Cypress
@@ -59,8 +63,69 @@ submit: permite enviar el contenido del formulario.
 
 A todas las funciones se les puede pasar un json con el elemento timeout. Este elemento nos permite incluir un tiempo que nos ayudará a esperar a que el elemento termine de cargar en la página.
 
-## Buenas pŕacticas
+### Buenas prácticas
 Es importante que tengamos [buenas prácticas](https://docs.cypress.io/guides/references/best-practices.html) para testear sin problemas. Entre ellas el manejo de selectores óptimos para nuestros elementos de la web, como pueden ser selectores de web del tipo con selectores del tipo id como son: data-testid (mi preferido para usarlo también con JEST) o data-cy.
+
+### Test unitarios sobre componentes
+Escribimos nuestro test, montando nuestro componente con Cypress en el directorio __tests__ de nuestro componente. Todos los test deben estar al menos dentro de un describe. Dentro de este describe podemos tener varios it, que serán los test que queramos realizar. Dentro de cada it podemos comprobar que el componente se renderiza correctamente, que los eventos se lanzan correctamente, que los props se pasan correctamente, etc.
+
+```js
+import Contador from '../Contador.vue'
+describe('Contador component tests', () => {
+it('debería abrir renderizar con la propiedad correctamente', () => {
+    const valorInicial = 10
+    cy.mount(Contador, {
+      props: {
+        valorInicial: valorInicial,
+      },
+    })
+    // textoContador es visible
+    cy.get(textoContador).should('be.visible')
+    // Su valor es 10
+    cy.get(textoContador).should('have.text', 'Valor: 10')
+    // textoDoble es visible
+    cy.get(textoDoble).should('be.visible')
+    // Su valor es 20
+    cy.get(textoDoble).should('have.text', 'Doble: 20')
+  })
+})
+```
+#### Llamando a los test unitarios
+Para llamar a los test unitarios, podemos hacerlo de dos formas:
+- npm run test:unit, para ver los resultados en la terminal.
+- npm run test:unit:dev, para ejecutarlos en el entorno de Cypress.
+
+### Test E2E de nuestra aplicación
+Escribimos el test en el directorio cypress/e2e. De la misma manera, es recomendable que estén dentro de un describe. Dentro de este describe podemos tener varios it, que serán los test que queramos realizar. Dentro de cada it podemos comprobar que la aplicación se renderiza correctamente, que los eventos se lanzan correctamente, que los props se pasan correctamente, etc.
+
+```js
+describe('Home Tests', () => {
+  it('debería visitar la página principal', () => {
+    cy.visit('/')
+    cy.contains('h1', 'Home')
+  })
+  it('debería renderizar el input', () => {
+    cy.visit('/')
+    cy.contains('h1', 'Home')
+    // El input es visible
+    cy.get(inputNombre).should('be.visible')
+    // el texto nombre no debe estar visible
+    cy.get(textoNombre).should('not.be.visible')
+    // Tecleamos pepe en el input
+    cy.get(inputNombre).type('pepe')
+    // El texto nombre debe estar visible
+    cy.get(textoNombre).should('be.visible')
+    // El texto nombre debe tener el valor pepe
+    cy.get(textoNombre).should('have.text', 'pepe')
+  })
+})
+```
+#### Llamando a los test E2E
+Para llamar a los test E2E, podemos hacerlo de dos formas:
+- npm run test:e2e, para ver los resultados en la terminal.
+- npm run test:e2e:dev, para ejecutarlos en el entorno de Cypress.
+
+
 
 
 ## Ejercicios

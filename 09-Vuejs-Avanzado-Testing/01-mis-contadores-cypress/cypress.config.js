@@ -6,6 +6,7 @@ module.exports = defineConfig({
     baseUrl: 'http://localhost:4173',
   },
   component: {
+    // busca los test en esta carpeta
     specPattern: 'src/**/__tests__/*.{cy,spec}.{js,ts,jsx,tsx}',
     devServer: {
       framework: 'vue',
