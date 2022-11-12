@@ -121,6 +121,7 @@ describe('Home Tests', () => {
 })
 ```
 #### Llamando a los test E2E
+Antes de llamar a los test debemos hacer un build de nuestra aplicación. Para ello, ejecutamos el comando npm run build. Una vez hecho esto, podemos ejecutar los test con el comando npm run test:e2e. 
 Para llamar a los test E2E, podemos hacerlo de dos formas:
 - npm run test:e2e, para ver los resultados en la terminal.
 - npm run test:e2e:dev, para ejecutarlos en el entorno de Cypress.
