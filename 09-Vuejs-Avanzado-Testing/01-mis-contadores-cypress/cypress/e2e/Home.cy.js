@@ -1,26 +1,25 @@
-// Si queremos que cargue pinia
-// import { createTestingPinia } from '@pinia/testing'
-import Contador from '../Contador.vue'
+// https://docs.cypress.io/api/introduction/api.html
 
-// Describimos la suite de tests, todos los test deben estar dentro de una suite para poder ejecutarse
-// y detectarlos
-describe('Contador component tests', () => {
-  // Cogemos los elementos que vamos a necesitar para los tests del DOM, que hemos etiquetado
-  // Si los etiquetamos así en el DOM, podemos cogerlos con el selector de Cypress
+describe('Home Tests', () => {
+  it('debería visitar la página principal', () => {
+    cy.visit('/')
+    cy.contains('h1', 'Home')
+  })
+
+  // podemos probar cosas del contador aquí
   const textoContador = '[data-cy="contador-valor"]'
   const textoDoble = '[data-cy="contador-doble"]'
   const botonIncrementar = '[data-cy="boton-incrementar"]'
   const botonDecrementar = '[data-cy="boton-decrementar"]'
   const botonIncrementarAsync = '[data-cy="boton-incrementar-async"]'
   const botonDecrementarAsync = '[data-cy="boton-decrementar-async"]'
-  const textoNumerosRojos = '[data-cy="numeros-rojos"]'
-  const textoNumerosNormales = '[data-cy="numeros-normales"]'
   const textoEsDivisible = '[data-cy="es-divisible"]'
+  const textoNombre = '[data-cy="texto-nombre"]'
+  const inputNombre = '[data-cy="input-nombre"]'
 
   it('debería abrir y cerrar correctamente', () => {
-    // Montamos el componente, como tiene pinia como dependencia, tenemos que montar el pinia
-    // y pasarle el store que queremos usar
-    cy.mount(Contador)
+    cy.visit('/')
+    cy.contains('h1', 'Home')
     // textoContador es visible
     cy.get(textoContador).should('be.visible')
     // textoDoble es visible
@@ -34,12 +33,8 @@ describe('Contador component tests', () => {
   })
 
   it('debería abrir renderizar con la propiedad correctamente', () => {
-    const valorInicial = 10
-    cy.mount(Contador, {
-      props: {
-        valorInicial: valorInicial,
-      },
-    })
+    cy.visit('/')
+    cy.contains('h1', 'Home')
     // textoContador es visible
     cy.get(textoContador).should('be.visible')
     // Su valor es 10
@@ -51,12 +46,8 @@ describe('Contador component tests', () => {
   })
 
   it('debería incrementar correctamente', () => {
-    const valorInicial = 10
-    cy.mount(Contador, {
-      props: {
-        valorInicial: valorInicial,
-      },
-    })
+    cy.visit('/')
+    cy.contains('h1', 'Home')
     // textoContador es visible
     cy.get(textoContador).should('be.visible')
     // Su valor es 10
@@ -74,12 +65,8 @@ describe('Contador component tests', () => {
   })
 
   it('debería decrementar correctamente', () => {
-    const valorInicial = 10
-    cy.mount(Contador, {
-      props: {
-        valorInicial: valorInicial,
-      },
-    })
+    cy.visit('/')
+    cy.contains('h1', 'Home')
     // textoContador es visible
     cy.get(textoContador).should('be.visible')
     // Su valor es 10
@@ -97,12 +84,8 @@ describe('Contador component tests', () => {
   })
 
   it('debería incrementar correctamente con el botón async', () => {
-    const valorInicial = 10
-    cy.mount(Contador, {
-      props: {
-        valorInicial: valorInicial,
-      },
-    })
+    cy.visit('/')
+    cy.contains('h1', 'Home')
     // textoContador es visible
     cy.get(textoContador).should('be.visible')
     // Su valor es 10
@@ -120,12 +103,8 @@ describe('Contador component tests', () => {
   })
 
   it('debería decrementar correctamente con el botón async', () => {
-    const valorInicial = 10
-    cy.mount(Contador, {
-      props: {
-        valorInicial: valorInicial,
-      },
-    })
+    cy.visit('/')
+    cy.contains('h1', 'Home')
     // textoContador es visible
     cy.get(textoContador).should('be.visible')
     // Su valor es 10
@@ -143,12 +122,8 @@ describe('Contador component tests', () => {
   })
 
   it('debería saber si es multiplo de 3', () => {
-    const valorInicial = 10
-    cy.mount(Contador, {
-      props: {
-        valorInicial: valorInicial,
-      },
-    })
+    cy.visit('/')
+    cy.contains('h1', 'Home')
     // Su valor es 10
     cy.get(textoContador).should('have.text', 'Valor: 10')
     cy.get(textoEsDivisible).should('have.text', ' Es divisible entre 3: false')
@@ -161,30 +136,18 @@ describe('Contador component tests', () => {
     cy.get(textoEsDivisible).should('have.class', 'verde')
   })
 
-  it('deberia detectar si estamos en numeros rojos', () => {
-    const valorInicial = 0
-    cy.mount(Contador, {
-      props: {
-        valorInicial: valorInicial,
-      },
-    })
-    cy.get(textoContador).should('have.text', 'Valor: 0')
-    // texto numero normales debe estar visible
-    cy.get(textoNumerosNormales).should('be.visible')
-    cy.get(textoNumerosNormales).should('have.text', ' Estás 😁 ')
-    // Decrementamos el contador
-    cy.get(botonDecrementar).click()
-    cy.get(textoContador).should('have.text', 'Valor: -1')
-    // texto numero rojos debe estar visible
-    cy.get(textoNumerosRojos).should('be.visible')
-    // Debe tener la clase rojo
-    cy.get(textoNumerosRojos).should('have.class', 'rojo')
-    // tiene el texto correcto
-    cy.get(textoNumerosRojos).should(
-      'have.text',
-      ' Estás en número rojos  No te pases que estás en negativo '
-    )
+  it('debería renderizar el input', () => {
+    cy.visit('/')
+    cy.contains('h1', 'Home')
+    // El input es visible
+    cy.get(inputNombre).should('be.visible')
+    // el texto nombre no debe estar visible
+    cy.get(textoNombre).should('not.be.visible')
+    // Tecleamos pepe en el input
+    cy.get(inputNombre).type('pepe')
+    // El texto nombre debe estar visible
+    cy.get(textoNombre).should('be.visible')
+    // El texto nombre debe tener el valor pepe
+    cy.get(textoNombre).should('have.text', 'pepe')
   })
-
-  it
 })
