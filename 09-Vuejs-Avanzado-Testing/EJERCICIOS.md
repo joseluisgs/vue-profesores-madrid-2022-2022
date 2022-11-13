@@ -11,3 +11,9 @@ Ejercicios de esta unidad
 
 ## Ejercicio 3
 - Repite el ejercicio de los pokemons. Testea los componentes y su comportamiento con Cypress.
+
+## Ejercicio 4
+- Realiza una app TODO y testea como app con Cypress. 
+
+## Ejercicio 5
+- Prueba Cypress como framework E2E en una página web real que te guste.
