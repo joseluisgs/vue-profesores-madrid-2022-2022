@@ -6,7 +6,7 @@ Ejercicios de esta unidad
 - Realiza una app basada en un contador y testea sus componentes y comportamiento con Cypress.
 
 ## Ejercicio 2
-- Escribe ejemplos donde y de qué manera puedes usar Cypress y distintas formas de hacerlo.
+- Escribe ejemplos dónde y de qué manera puedes usar Cypress y distintas formas de hacerlo.
 
 
 ## Ejercicio 3
