@@ -1,13 +1,6 @@
 // https://docs.cypress.io/api/introduction/api.html
 
 describe('About Tests', () => {
-  it('debería abrir la página About', () => {
-    cy.visit('/')
-    cy.contains('h1', 'Home')
-    // Navega a la página About
-    cy.get('a[href="/about"]').click()
-    cy.contains('h1', 'About')
-  })
   // Ahora podríamos repetir algunos test de modal si los queremos aquí
   const modalBodySelector = '[data-cy="modal-body"]'
   const openButtonSelector = '[data-cy="open-button"]'
