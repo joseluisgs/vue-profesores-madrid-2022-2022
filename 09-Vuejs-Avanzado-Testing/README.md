@@ -18,8 +18,12 @@ Testing con Cypress
     - [Buenas prácticas](#buenas-prácticas)
     - [Test unitarios sobre componentes](#test-unitarios-sobre-componentes)
       - [Llamando a los test unitarios](#llamando-a-los-test-unitarios)
+      - [Ejemplos](#ejemplos)
     - [Test E2E de nuestra aplicación](#test-e2e-de-nuestra-aplicación)
       - [Llamando a los test E2E](#llamando-a-los-test-e2e)
+      - [Ejemplos](#ejemplos-1)
+      - [Tutorial E2E](#tutorial-e2e)
+  - [Referecias](#referecias)
   - [Ejercicios](#ejercicios)
   - [Autor](#autor)
     - [Contacto](#contacto)
@@ -95,6 +99,9 @@ Para llamar a los test unitarios, podemos hacerlo de dos formas:
 - npm run test:unit, para ver los resultados en la terminal.
 - npm run test:unit:dev, para ejecutarlos en el entorno de Cypress.
 
+#### Ejemplos
+Puedes encontrar ejemplos de test unitarios sobre componentes usando Cypress en el siguiente [repositorio](https://github.com/cypress-io/cypress/tree/develop/npm/vue/cypress/component).
+
 ### Test E2E de nuestra aplicación
 Escribimos el test en el directorio cypress/e2e. De la misma manera, es recomendable que estén dentro de un describe. Dentro de este describe podemos tener varios it, que serán los test que queramos realizar. Dentro de cada it podemos comprobar que la aplicación se renderiza correctamente, que los eventos se lanzan correctamente, que los props se pasan correctamente, etc.
 
@@ -121,13 +128,26 @@ describe('Home Tests', () => {
 })
 ```
 #### Llamando a los test E2E
-Antes de llamar a los test debemos hacer un build de nuestra aplicación. Para ello, ejecutamos el comando npm run build. Una vez hecho esto, podemos ejecutar los test con el comando npm run test:e2e. 
+Antes de llamar a los test debemos hacer un build de nuestra aplicación. Para ello, ejecutamos el comando **npm run build**. Una vez hecho esto, podemos ejecutar los test con el comando npm run test:e2e. 
 Para llamar a los test E2E, podemos hacerlo de dos formas:
 - npm run test:e2e, para ver los resultados en la terminal.
 - npm run test:e2e:dev, para ejecutarlos en el entorno de Cypress.
 
+#### Ejemplos
+Puedes encontrar ejemplos de test unitarios sobre componentes usando Cypress en el siguiente [repositorio](https://github.com/cypress-io/cypress-example-kitchensink).
+
+#### Tutorial E2E
+- https://example.cypress.io/
+- https://www.tutorialspoint.com/cypress/index.htm
+- https://www.browserstack.com/guide/cypress-automation-tutorial
+- https://www.valentinog.com/blog/cypress/
 
 
+## Referecias
+- [Cypress en Vue](https://docs.cypress.io/guides/component-testing/vue/overview)
+- [Quickstart](https://docs.cypress.io/guides/component-testing/vue/quickstart)
+- [Examples](https://docs.cypress.io/guides/component-testing/vue/examples)
+- [API](https://docs.cypress.io/guides/component-testing/vue/api)
 
 ## Ejercicios
 Este tema tiene varios ejercicios, puedes realizarlos [aquí](./EJERCICIOS.md)
