@@ -1,6 +1,6 @@
 # Vue.js avanzado: Testing
 
-Testing con Cypress
+Testing con Cypress en Vue.js
 
 [![Vue Ready](https://img.shields.io/badge/Code-Vue.js-%2342b983)](https://es.vuejs.org/)
 [![LICENSE](https://img.shields.io/badge/License-CC-%23e64545)](https://joseluisgs.github.io/docs/license/)
@@ -12,15 +12,17 @@ Testing con Cypress
   - [Acerca de](#acerca-de)
   - [Testing Unitario en Vue.js](#testing-unitario-en-vuejs)
   - [Testing E2E en Vue.js](#testing-e2e-en-vuejs)
-  - [CYPRESS](#cypress)
+  - [Cypress](#cypress)
     - [Aserciones](#aserciones)
     - [Algunos métodos útiles de Cypress](#algunos-métodos-útiles-de-cypress)
     - [Buenas prácticas](#buenas-prácticas)
     - [Test unitarios sobre componentes](#test-unitarios-sobre-componentes)
       - [Llamando a los test unitarios](#llamando-a-los-test-unitarios)
+      - [Vídeos](#vídeos)
       - [Ejemplos](#ejemplos)
     - [Test E2E de nuestra aplicación](#test-e2e-de-nuestra-aplicación)
       - [Llamando a los test E2E](#llamando-a-los-test-e2e)
+      - [Vídeos](#vídeos-1)
       - [Ejemplos](#ejemplos-1)
       - [Tutorial E2E](#tutorial-e2e)
   - [Referecias](#referecias)
@@ -31,7 +33,7 @@ Testing con Cypress
   - [Licencia de uso](#licencia-de-uso)
 
 ## Acerca de
-En esta unidad vamos a aprender a testear nuestra aplicación con Cypress con el objetivo de asegurar que nuestra aplicación funciona correctamente.
+En esta unidad vamos a aprender a testear nuestra aplicación Vue.js con Cypress con el objetivo de asegurar que nuestra aplicación funciona correctamente.
 
 ## Testing Unitario en Vue.js
 Una de las grandes ventajas de Vue.js es que nos permite testear de forma sencilla y rápida. Para ello podemos hacer uso de [Vue Test Utils](https://test-utils.vuejs.org/). Esta suite de herramientas nos permite testear de forma sencilla nuestros componentes y aplicaciones y todo lo realacionado con ellos:
@@ -46,8 +48,8 @@ Para usarlo podemos hacer uso de [Vitest](https://vitest.dev/) o [Jest](https://
 ## Testing E2E en Vue.js
 El testing E2E es una de las partes más importantes de cualquier aplicación. Con ello nos centramos en testear la aplicación desde el punto de vista del usuario. Para ello, en Vue.js podemos hacer uso de [Cypress](https://www.cypress.io/) para testear nuestra aplicación o componentes de forma sencilla y rápida.
 
-## CYPRESS
-[Cypress](https://www.cypress.io/) es una suite de test E2E en base a [historias de usuario](https://www.atlassian.com/es/agile/project-management/user-stories).
+## Cypress
+[Cypress](https://www.cypress.io/) es una suite de test E2E en base a [historias de usuario](https://www.atlassian.com/es/agile/project-management/user-stories). Además, ahora permite testear unitariamente componentes.
 
 ![img](https://panoramic.vc/wp-content/uploads/2021/02/Cypress_Logotype_Color_Light_BG-1-002.png)
 
@@ -68,7 +70,7 @@ submit: permite enviar el contenido del formulario.
 A todas las funciones se les puede pasar un json con el elemento timeout. Este elemento nos permite incluir un tiempo que nos ayudará a esperar a que el elemento termine de cargar en la página.
 
 ### Buenas prácticas
-Es importante que tengamos [buenas prácticas](https://docs.cypress.io/guides/references/best-practices.html) para testear sin problemas. Entre ellas el manejo de selectores óptimos para nuestros elementos de la web, como pueden ser selectores de web del tipo con selectores del tipo id como son: data-testid (mi preferido para usarlo también con JEST) o data-cy.
+Es importante que tengamos [buenas prácticas](https://docs.cypress.io/guides/references/best-practices.html) para testear sin problemas. Entre ellas el manejo de selectores óptimos para nuestros elementos de la web, como pueden ser selectores de web del tipo con selectores del tipo id como son: data-testid (mi preferido para usarlo también con Vitest/jest) o data-cy (si quieres dejar claro que es para Cypress).
 
 ### Test unitarios sobre componentes
 Escribimos nuestro test, montando nuestro componente con Cypress en el directorio __tests__ de nuestro componente. Todos los test deben estar al menos dentro de un describe. Dentro de este describe podemos tener varios it, que serán los test que queramos realizar. Dentro de cada it podemos comprobar que el componente se renderiza correctamente, que los eventos se lanzan correctamente, que los props se pasan correctamente, etc.
@@ -91,6 +93,8 @@ it('debería abrir renderizar con la propiedad correctamente', () => {
     cy.get(textoDoble).should('be.visible')
     // Su valor es 20
     cy.get(textoDoble).should('have.text', 'Doble: 20')
+    // O usando contains
+    cy.get(textoDoble).contains('20')
   })
 })
 ```
@@ -98,6 +102,9 @@ it('debería abrir renderizar con la propiedad correctamente', () => {
 Para llamar a los test unitarios, podemos hacerlo de dos formas:
 - npm run test:unit, para ver los resultados en la terminal.
 - npm run test:unit:dev, para ejecutarlos en el entorno de Cypress.
+
+#### Vídeos
+Además de los resultados en la terminal, podemos ver los vídeos de los test unitarios en ejecución en el directorio cypress/videos.
 
 #### Ejemplos
 Puedes encontrar ejemplos de test unitarios sobre componentes usando Cypress en el siguiente [repositorio](https://github.com/cypress-io/cypress/tree/develop/npm/vue/cypress/component).
@@ -124,14 +131,24 @@ describe('Home Tests', () => {
     cy.get(textoNombre).should('be.visible')
     // El texto nombre debe tener el valor pepe
     cy.get(textoNombre).should('have.text', 'pepe')
+    // o usando contains
+    cy.get(textoNombre).contains('pepe')
   })
 })
 ```
 #### Llamando a los test E2E
-Antes de llamar a los test debemos hacer un build de nuestra aplicación. Para ello, ejecutamos el comando **npm run build**. Una vez hecho esto, podemos ejecutar los test con el comando npm run test:e2e. 
+Antes de llamar a los test debemos hacer un build de nuestra aplicación. Para ello, ejecutamos el comando **npm run build**. ¿Por qué? Recuerda que estamos haciendo en este momento un test E2E, por lo que se testea la web, no el código. Por tanto, debemos tener la web compilada para poder testearla. Es decir, los ficheros html finales que forman nuestra web tal y como estaría desplegada o distribuida. 
+
+Una vez hecho el build, podemos ejecutar los test E2E de dos formas:
+
+Una vez hecho esto, podemos ejecutar los test con el comando npm run test:e2e. 
 Para llamar a los test E2E, podemos hacerlo de dos formas:
 - npm run test:e2e, para ver los resultados en la terminal.
 - npm run test:e2e:dev, para ejecutarlos en el entorno de Cypress.
+
+#### Vídeos
+Además de los resultados en la terminal, podemos ver los vídeos de los test E2E en ejecución en el directorio cypress/videos.
+
 
 #### Ejemplos
 Puedes encontrar ejemplos de test unitarios sobre componentes usando Cypress en el siguiente [repositorio](https://github.com/cypress-io/cypress-example-kitchensink).
