@@ -6,7 +6,7 @@
     <BuscadorPokemon @input-change="searchPokemon" />
 
     <TablaPokemons
-      :pokemons="filteredPokemons"
+      :pokemons="pokemonStore.pokemonsFiltered(search)"
       @remove-pokemon="removePokemon"
     />
   </div>
@@ -48,7 +48,7 @@
   import BuscadorPokemon from '@/components/BuscadorPokemon.vue'
   import TablaPokemons from '@/components/TablaPokemons.vue'
   import Modal from '@/components/Modal.vue'
-  import { computed, ref, watch } from 'vue'
+  import { ref, watch } from 'vue'
   import { usePokemonStore } from '@/stores/pokemons'
 
   const pokemonStore = usePokemonStore()
@@ -82,11 +82,6 @@
   function closeModal() {
     isModalOpen.value = false
   }
-
-  // Mis métodos computados
-  const filteredPokemons = computed(() => {
-    return pokemonStore.myPokemons.filter((pokemon) => pokemon.name.includes(search.value))
-  })
 
   // Mis watchers
   watch(search, (newValue, oldValue) => {

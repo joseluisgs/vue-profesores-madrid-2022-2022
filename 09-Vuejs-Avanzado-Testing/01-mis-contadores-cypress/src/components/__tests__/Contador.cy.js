@@ -185,6 +185,4 @@ describe('Contador component tests', () => {
       ' Estás en número rojos  No te pases que estás en negativo '
     )
   })
-
-  it
 })

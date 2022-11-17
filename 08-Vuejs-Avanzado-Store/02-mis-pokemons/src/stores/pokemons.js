@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import axios from 'axios'
 
 export const usePokemonStore = defineStore('PokemonStore', () => {
@@ -7,6 +7,7 @@ export const usePokemonStore = defineStore('PokemonStore', () => {
   const pokemons = ref([])
   const pokemonsFavorites = ref([])
 
+  // Mis getters, para leer sin modificar
   const myPokemons = computed(() => {
     return pokemons.value
   })
@@ -15,7 +16,12 @@ export const usePokemonStore = defineStore('PokemonStore', () => {
     return pokemonsFavorites.value
   })
 
-  // Metodos de acción
+  // Para pasarle parámetros a un computer, se usa computed(() => (param) =>{...})
+  const pokemonsFiltered = computed(() => (pokemon) => {
+    return pokemons.value.filter((p) => p.name.includes(pokemon))
+  })
+
+  // Metodos de acción, modifican el estado
   function loadFromStorage() {
     const storage = localStorage.getItem('pokemonsFavorites')
     if (storage) {
@@ -32,13 +38,11 @@ export const usePokemonStore = defineStore('PokemonStore', () => {
     // solo si no esta en favoritos
     if (!pokemonsFavorites.value.find((p) => p.name === pokemon.name)) {
       pokemonsFavorites.value.push(pokemon)
-      saveToStorage()
     }
   }
 
   const removePokemonFavorites = (pokemon) => {
     pokemonsFavorites.value = pokemonsFavorites.value.filter((p) => p.name !== pokemon.name)
-    saveToStorage()
   }
 
   const existsPokemonFavorites = (pokemon) => {
@@ -47,6 +51,8 @@ export const usePokemonStore = defineStore('PokemonStore', () => {
 
   const removePokemon = (pokemon) => {
     pokemons.value = pokemons.value.filter((p) => p !== pokemon)
+    // Lo borro de favoritos
+    removePokemonFavorites(pokemon)
   }
 
   const loadPokemons = async (max = 25) => {
@@ -62,9 +68,9 @@ export const usePokemonStore = defineStore('PokemonStore', () => {
     }
   }
 
-  const deletePokemon = (pokemonSelected) => {
-    pokemons.value = pokemons.value.filter((pokemon) => pokemon.name !== pokemonSelected.name)
-  }
+  watch(pokemonsFavorites, () => {
+    saveToStorage()
+  })
 
   // Y aquí tenemos las cosas publicas
   return {
@@ -72,9 +78,9 @@ export const usePokemonStore = defineStore('PokemonStore', () => {
     removePokemonFavorites,
     existsPokemonFavorites,
     loadPokemons,
-    deletePokemon,
     myPokemons,
     myPokemonsFavorites,
     removePokemon,
+    pokemonsFiltered,
   }
 })

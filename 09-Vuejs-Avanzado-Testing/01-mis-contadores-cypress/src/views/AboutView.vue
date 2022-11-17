@@ -2,7 +2,7 @@
   <main>
     <h1>About</h1>
     <p>About page</p>
-    <Modal />
+    <Modal color="rgb(255, 255, 0)"/>
   </main>
 </template>
 
