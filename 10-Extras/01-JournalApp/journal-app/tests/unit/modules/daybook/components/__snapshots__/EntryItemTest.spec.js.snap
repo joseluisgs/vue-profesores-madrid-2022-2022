@@ -1,0 +1,9 @@
+// Vitest Snapshot v1
+
+exports[`Daybook Componente -> EntryItem > Debe hacer match con el snapshot 1`] = `
+"<div class=\\"m-2 mb-3 cursor-pointer rounded-lg border border-primary bg-base-100 p-2 shadow-md hover:bg-base-200\\">
+  <!-- Titulo -->
+  <div class=\\"flex\\"><span data-testid=\\"entry-day\\" class=\\"text-lg font-bold text-primary\\">19</span><span data-testid=\\"entry-month\\" class=\\"mx-2 text-lg font-semibold text-base-content\\">Octubre</span><span data-testid=\\"entry-year\\" class=\\"mx-1 text-lg font-light text-base-content\\">2022, </span><span data-testid=\\"entry-dayofweek\\" class=\\"mx-1 text-lg font-light text-base-content\\">Miércoles.</span></div><!-- Descripcion -->
+  <div data-testid=\\"entry-text\\" class=\\"text-sm text-base-content\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut eni...</div>
+</div>"
+`;

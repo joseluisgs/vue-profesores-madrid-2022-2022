@@ -1,0 +1,3 @@
+// Vitest Snapshot v1
+
+exports[`Daybook Componente -> NavBar > Debe hacer match con el snapshot 1`] = `"DayBook jdoe"`;

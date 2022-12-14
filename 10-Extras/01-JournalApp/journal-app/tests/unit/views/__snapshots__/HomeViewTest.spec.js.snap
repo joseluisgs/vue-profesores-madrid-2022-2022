@@ -1,0 +1,14 @@
+// Vitest Snapshot v1
+
+exports[`View -> HomeView > Debe hacer match con el snapshot 1`] = `
+"<div data-theme=\\"joseluisgs\\" class=\\"container mx-auto rounded-lg px-3 py-4 text-center shadow-xl\\">
+  <h1 class=\\"cursor-pointer text-xl font-semibold text-gray-500 hover:text-indigo-500\\"> This is an home page </h1><button data-testid=\\"DayButton\\" class=\\"btn btn-primary\\"> DayBook </button><button data-testid=\\"AboutButton\\" class=\\"btn btn-secondary\\"> About </button><button class=\\"btn btn-outline btn-success\\"> Abrir Modal </button>
+  <article class=\\"prose mx-auto text-center\\">
+    <h1>Garlic bread with cheese: What the science tells us</h1>
+    <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae minus quam harum ab dolorum laudantium perspiciatis dolores corporis commodi, a quidem. Possimus ipsum magnam repellendus ipsam laboriosam architecto mollitia consectetur?. </p>
+    <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium eveniet magni deleniti eius. Nisi ipsa accusantium voluptatem quis unde sunt, ratione itaque eius atque quia odio ab aperiam explicabo! Laboriosam!. </p><!-- ... -->
+  </article>
+</div>
+<!-- Mi modal -->
+<!--v-if-->"
+`;

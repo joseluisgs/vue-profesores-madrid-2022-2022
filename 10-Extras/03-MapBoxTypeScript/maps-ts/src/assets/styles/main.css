@@ -1,0 +1,38 @@
+@import url('https://rsms.me/inter/inter.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 10px;
+}
+/* 
+Mi clase para maquetar, luego quitar!!! */
+.dev {
+  border-width: 2px;
+  border-style: dashed solid;
+  border-color: red;
+}
+
+/* Scrollbar */
+/* For Firefox Browser */
+/* .scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(39, 10, 170) rgb(84, 155, 221);
+} */
+
+/* For Chrome, EDGE, Opera, Others */
+/* .scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 3px;
+} 
+
+.scrollbar::-webkit-scrollbar-track {
+  @apply bg-base-200;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-primary;
+} */

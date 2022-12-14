@@ -1,0 +1,20 @@
+// Vitest Snapshot v1
+
+exports[`Daybook Componente -> EntryList > Debe hacer match con el snapshot 1`] = `
+"<div class=\\"h-[calc(88vh)] border-r border-primary\\" data-v-d2f66aca=\\"\\">
+  <div class=\\"mr-2 px-2 pt-2\\" data-v-d2f66aca=\\"\\"><input data-testid=\\"entrylist-input\\" type=\\"text\\" placeholder=\\"Buscar entradas\\" class=\\"input input-bordered input-primary w-full rounded-md bg-base-100 text-base-content\\" data-v-d2f66aca=\\"\\"></div>
+  <div class=\\"mx-2 mt-2 flex justify-center\\" data-v-d2f66aca=\\"\\"><button data-testid=\\"entrylist-new\\" class=\\"btn btn-outline btn-primary\\" data-v-d2f66aca=\\"\\">
+      <icon-stub icon=\\"ci:file-new\\" class=\\"mr-2 h-6 w-6\\" data-v-d2f66aca=\\"\\"></icon-stub> Nueva Entrada
+    </button></div>
+  <div class=\\"scrollbar mt-1 h-[calc(88vh_-_90px)] overflow-y-auto\\" data-v-d2f66aca=\\"\\">
+    <div data-v-d2f66aca=\\"\\">
+      <!-- Animaciones -->
+      <transition-group-stub data-v-d2f66aca=\\"\\">
+        <entry-item-stub entry=\\"[object Object]\\" data-testid=\\"entrylist-item\\" data-v-d2f66aca=\\"\\"></entry-item-stub>
+        <entry-item-stub entry=\\"[object Object]\\" data-testid=\\"entrylist-item\\" data-v-d2f66aca=\\"\\"></entry-item-stub>
+        <entry-item-stub entry=\\"[object Object]\\" data-testid=\\"entrylist-item\\" data-v-d2f66aca=\\"\\"></entry-item-stub>
+      </transition-group-stub>
+    </div>
+  </div>
+</div>"
+`;
