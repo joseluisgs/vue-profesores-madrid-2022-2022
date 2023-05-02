@@ -45,17 +45,18 @@ Las referencias importantes o recomendadas para el curso las encontrarás en el 
 
 ## Autor
 
-Codificado con :sparkling_heart: por [José Luis González Sánchez](https://twitter.com/joseluisgonsan). 
+Codificado con :sparkling_heart: por [José Luis González Sánchez](https://twitter.com/JoseLuisGS_)
 
-[![Twitter](https://img.shields.io/twitter/follow/joseluisgonsan?style=social)](https://twitter.com/joseluisgonsan)
+[![Twitter](https://img.shields.io/twitter/follow/JoseLuisGS_?style=social)](https://twitter.com/JoseLuisGS_)
 [![GitHub](https://img.shields.io/github/followers/joseluisgs?style=social)](https://github.com/joseluisgs)
 
 ### Contacto
+
 <p>
   Cualquier cosa que necesites házmelo saber por si puedo ayudarte 💬.
 </p>
 <p>
- <a href="https://joseluisgs.github.io/" target="_blank">
+ <a href="https://joseluisgs.github.dev/" target="_blank">
         <img src="https://joseluisgs.github.io/img/favicon.png" 
     height="30">
     </a>  &nbsp;&nbsp;
@@ -63,7 +64,7 @@ Codificado con :sparkling_heart: por [José Luis González Sánchez](https://twi
         <img src="https://distreau.com/github.svg" 
     height="30">
     </a> &nbsp;&nbsp;
-        <a href="https://twitter.com/joseluisgonsan" target="_blank">
+        <a href="https://twitter.com/JoseLuisGS_" target="_blank">
         <img src="https://i.imgur.com/U4Uiaef.png" 
     height="30">
     </a> &nbsp;&nbsp;
@@ -73,16 +74,13 @@ Codificado con :sparkling_heart: por [José Luis González Sánchez](https://twi
     </a>  &nbsp;&nbsp;
     <a href="https://discordapp.com/users/joseluisgs#3560" target="_blank">
         <img src="https://logodownload.org/wp-content/uploads/2017/11/discord-logo-4-1.png" 
-    height="30"> 
+    height="30">
     </a> &nbsp;&nbsp;
     <a href="https://g.dev/joseluisgs" target="_blank">
         <img loading="lazy" src="https://googlediscovery.com/wp-content/uploads/google-developers.png" 
     height="30">
     </a>    
 </p>
-
-### ¿Un café?
-<p><a href="https://www.buymeacoffee.com/joseluisgs"> <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" height="48" alt="joseluisgs" /></a></p><br><br><br>
 
 ## Licencia de uso
 
